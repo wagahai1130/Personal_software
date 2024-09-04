@@ -1,0 +1,202 @@
+/*
+ *  ファイル名	: system.h
+ *  機能	: 共通変数，外部関数の定義
+ */
+#include <SDL2/SDL.h>
+#include <stdint.h>
+#include <stdbool.h>
+#include <GL/gl.h>
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <algorithm>
+#include <filesystem>
+#include <vector>
+#include <string>
+#include <GL/glut.h>
+#include <GL/glu.h> // GLUライブラリを追加
+
+/* ウインドウサイズ(ピクセル) */
+#define WD_Width 1920
+#define WD_Height 1080
+
+/* 時間,距離など */
+#define NORMAL_VELOCITY 500 // 通常の移動速度
+
+/* オブジェクトのデータを格納する構造体*/
+struct Objdata {
+    std::vector<GLfloat> box_min; //バウンディングボックスの最小値
+    std::vector<GLfloat> box_max; //                        最大値
+    std::vector<GLfloat> vertex;  //頂点
+    std::vector<GLfloat> flat;    
+    std::vector<GLfloat> sortedVertex;
+    std::vector<GLfloat> sortedFlat;
+    std::vector<GLfloat> UV;
+    std::vector<int> index;
+    std::string filename;       // ファイル名を格納
+}; 
+#define OBJ_NUM 667
+
+/* キャラクタータイプ */
+typedef enum {
+    CT_Player   = 0,  // プレイヤー
+    CT_Enemy    = 1,  // 敵
+    CT_Boss     = 2,  // ボス
+    CT_Barrier  = 3, // 障壁
+    CT_BossHP   = 4, // ボスのHPバー
+    CT_Time     = 5,  // 残り時間
+    CT_Level    = 6,  // 現在のレベル
+    CT_Null     = 7,  // 配置なし
+    CT_PlayerHP_frame = 8, //プレイヤーのHPバーの枠
+    CT_PlayerHP = 9,  // プレイヤーのHPバー
+    CT_EXP_frame = 10,  // 経験値
+    CT_EXP      = 11,   // プレイヤーのEXPバー
+    CT_FixedEnemy = 12  // 六角形の敵
+} CharaType;
+#define CHARATYPE_NUM 13 // キャラタイプ総数
+
+/* キャラクターの状態 */
+typedef enum {
+    CS_Disable  = 0, // 非表示
+    CS_Normal   = 1, // 通常
+    CS_Avoid    = 2, // ジャンプ
+    CS_AvoidEnd = 3, // ジャンプの終わり
+    CS_Shot     = 4, // 攻撃
+    CS_ShotEnd  = 5, // 攻撃終わり
+    CS_Hit      = 6, // 被弾
+    CS_HitEnd   = 7,  // 被弾終わり
+} CharaStts;
+
+/* キャラクタータイプ別情報 */
+typedef struct {
+    Objdata obj;      // キャラの形状
+    int w;            // キャラの幅
+    int h;            // 高さ
+    int cx;           // 画像1つの左上を0としたときの中心位置x
+    int cy;           //                                     y
+    float rad;        // 当たり判定の半径
+    float vel;        // 速度の基準値
+    char* path;       // 画像ファイル名
+    GLuint* img;      // キャラのテクスチャーID
+} CharaTypeInfo;
+
+typedef struct CharaInfo_t {
+    CharaStts stts;        // 現在の状態
+    CharaType type;        // キャラクタータイプ
+    CharaTypeInfo* entity; // タイプ別情報の実体
+    SDL_FPoint dir;        // 現在の方向（大きさ最大1となる成分）
+    SDL_FPoint point;      // 現在の座標
+    int rest;              // 残り時間(特殊な動作をするのに必要な，フレーム数)
+    union {
+        int restfst; // restの初期値
+    };
+} CharaInfo;
+
+/* メッセージ */
+typedef enum {
+    MSG_None     = 0, // 表示なし
+    MSG_GameOver = 1, // ゲームオーバー
+    MSG_Clear    = 2, // クリア
+    MSG_Title    = 3, // タイトル
+    MSG_Show     = 4, // サブ
+    MSG_End      = 5  
+} Msg;
+#define MSG_NUM 6 // メッセージの数
+
+/* ゲームパッド入力の状態 */
+typedef struct {
+    double ana_x;       // 左スティック状態x
+    double ana_y;       //                 y                           
+    double joy_x;       // 右スティック状態x
+    double joy_y;       //                 y
+    SDL_bool one;
+    SDL_bool two;
+    SDL_bool three;
+    SDL_bool four;
+    SDL_bool five;
+    SDL_bool six;
+    SDL_bool seven; 
+    SDL_bool eight; 
+    SDL_bool nine;
+    SDL_bool ten;
+    SDL_bool eleven;
+    SDL_bool twelve;
+} PadStts;
+
+/* マウスの状態 */
+typedef struct {
+    int x;          // マウスのx座標
+    int y;          // マウスのy座標
+    SDL_bool left_button;   // 左ボタンの状態
+    SDL_bool right_button;  // 右ボタンの状態
+    SDL_bool middle_button; // 中央ボタンの状態
+} MouseStts;
+
+/* キーボードの状態 */
+typedef struct {
+    SDL_bool key_w;     // Wキーの状態
+    SDL_bool key_a;     // Aキーの状態
+    SDL_bool key_s;     // Sキーの状態
+    SDL_bool key_d;     // Dキーの状態
+    SDL_bool key_space; // スペースキーの状態
+    SDL_bool key_shift; // シフトキーの状態
+    SDL_bool key_ctrl;  // コントロールキーの状態
+    SDL_bool key_alt;   // アルトキーの状態
+    SDL_bool key_esc;   // エスケープキーの状態  
+} KeyboardStts;
+
+
+/* ゲームの状態 */
+typedef enum {
+    GS_End     = 0, // 終了
+    GS_Playing = 1, // 通常
+    GS_Ready   = 2, // 開始前
+} GameStts;
+
+/* ゲームの情報 */
+typedef struct {
+    GameStts stts;                  // ゲームの状態
+    MouseStts mouse;
+    KeyboardStts key;     
+    float timeStep;                 // 時間の増分(1フレームの時間,s)
+    CharaInfo* player;              // プレイヤー
+    Msg msg;                        // 表示中のメッセージ番号
+    GLuint* msgTexts[MSG_NUM]; // メッセージ画像のテクスチャID
+} GameInfo;
+
+/* 変数 */
+extern GameInfo gGame;
+extern CharaTypeInfo gCharaType[CHARATYPE_NUM];
+extern CharaInfo* gChara;
+extern int gCharaNum; // キャラ総数
+extern int gWeaponNum; // 武器総数
+extern CharaInfo* enemies;
+extern CharaInfo* gWeapon;
+extern int enemyCount;
+//extern SDL_Joystick *joystick;	// ジョイスティックを特定・利用するための構造体
+extern float gCameraYaw; // カメラの左右の回転角度
+extern int selectedOption;
+extern std::vector<Objdata> objDataArray;
+
+/* 関数 */
+// game.cpp
+int PrintError(const char* str);
+// system.cpp
+GLuint loadTexture(const char* path);
+void loadObjvalData(const std::string& filename, Objdata& obj);
+void loadObjData(const std::string& filename);
+std::vector<Objdata> loadAllObjData(const std::string& directoryPath);
+void makeObj(const Objdata& obj, float r, float g, float b, GLuint textureID);
+void initializeRendering();
+void renderBuildings(float r, float g, float b);
+void setLight();
+void setCamera();
+void drawTexturedSphere(GLfloat radius, GLuint textureID);
+void initSphere();
+void drawStatic();
+void resize(int w, int h);
+void InitWindow();
+void InitSystem();
+// window.cpp
+
+/* end of system.h */
