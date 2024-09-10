@@ -1,14 +1,11 @@
-# コンパイルなどが記載されていませんが，
-# makeのデフォルト動作(暗黙のルール)を使っています．
-# makeがどういう動作をするのかは-nオプションで確認できます．
-# 例： make -n ターゲット
-#
 CC = g++
 TEX = platex
 CFLAGS = -Wall -std=c++17 $(COPTIONS)
 LDFLAGS = 
 LOADLIBES = 
-LDLIBS = -lm -lSDL2 -lSDL2_image -lSDL2_ttf -lGL -lGLU -lSDL2 -lSDL2_gfx -lglut 
+CPPFLAGS = -I/home/vmware/software_g/c612301099/game/glm
+LDLIBS = -lm -lSDL2 -lSDL2_image -lSDL2_ttf -lGL -lGLU -lSDL2 -lSDL2_gfx -lglut
+
  
 # 実行時にライブラリが無い，と言われる場合は以下のオプションを追加
 # LDLIBS = -lm -lSDL2 -lSDL2_image -lSDL2_ttf -Wl,-rpath,/usr/local/lib
@@ -24,7 +21,7 @@ HEADS = system.h
 #
 # ターゲット指定しないと，最初のターゲットであるこれが選ばれる
 #
-debug: CPPFLAGS = -std=c++17 -g -O0
+debug: CPPFLAGS += -std=c++17 -g -O0
 debug: COPTIONS = -g -O0
 debug: $(TARGET)
 
@@ -33,7 +30,7 @@ debug: $(TARGET)
 #
 # ゲームの個人開発などで，完成品をmakeする際などに使うとよい
 #
-release: CPPFLAGS = -DNDEBUG -std=c++17 
+release: CPPFLAGS += -DNDEBUG -std=c++17 
 release: COPTIONS = -O3 
 release: $(TARGET)
 

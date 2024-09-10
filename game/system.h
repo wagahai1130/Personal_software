@@ -15,6 +15,11 @@
 #include <string>
 #include <GL/glut.h>
 #include <GL/glu.h> // GLUライブラリを追加
+#include <chrono>
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+
 
 /* ウインドウサイズ(ピクセル) */
 #define WD_Width 1920
@@ -85,12 +90,15 @@ typedef struct CharaInfo_t {
     CharaType type;        // キャラクタータイプ
     CharaTypeInfo* entity; // タイプ別情報の実体
     SDL_FPoint dir;        // 現在の方向（大きさ最大1となる成分）
-    SDL_FPoint point;      // 現在の座標
+    struct {
+        float x, y, z;     // 3次元空間での現在の座標
+    } point;              
     int rest;              // 残り時間(特殊な動作をするのに必要な，フレーム数)
     union {
         int restfst; // restの初期値
     };
 } CharaInfo;
+
 
 /* メッセージ */
 typedef enum {
@@ -174,9 +182,18 @@ extern CharaInfo* enemies;
 extern CharaInfo* gWeapon;
 extern int enemyCount;
 //extern SDL_Joystick *joystick;	// ジョイスティックを特定・利用するための構造体
-extern float gCameraYaw; // カメラの左右の回転角度
 extern int selectedOption;
 extern std::vector<Objdata> objDataArray;
+extern float eye[3];
+extern float cnt[3];
+extern GLuint staticObjectList; // ディスプレイリストのID
+extern int width;
+extern int height;
+extern int CenterX;
+extern int CenterY;
+extern float sphereRotationAngle;
+extern GLuint buildingTexture;
+extern GLuint skyTexture;
 
 /* 関数 */
 // game.cpp
@@ -195,8 +212,11 @@ void drawTexturedSphere(GLfloat radius, GLuint textureID);
 void initSphere();
 void drawStatic();
 void resize(int w, int h);
-void InitWindow();
+void InitWindow(SDL_Window*& window, SDL_GLContext& context);
 void InitSystem();
+void createStaticObjectList();
+void drawFloorWithGrid();
+void drawCrosshair();
 // window.cpp
 
 /* end of system.h */
