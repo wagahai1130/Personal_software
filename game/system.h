@@ -19,7 +19,10 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
-
+extern "C" {
+#include <libqhull_r/libqhull_r.h>
+}
+#include <unordered_map>
 
 /* ウインドウサイズ(ピクセル) */
 #define WD_Width 1920
@@ -27,6 +30,7 @@
 
 /* 時間,距離など */
 #define NORMAL_VELOCITY 500 // 通常の移動速度
+#define GRAVITY -0.02f  // 重力の値
 
 /* オブジェクトのデータを格納する構造体*/
 struct Objdata {
@@ -41,6 +45,20 @@ struct Objdata {
     std::string filename;       // ファイル名を格納
 }; 
 #define OBJ_NUM 667
+
+struct OBB {
+    glm::vec3 center;      // OBBの中心
+    glm::vec3 halfSizes;   // OBBの各軸の半径（長さの半分）
+    glm::mat3 orientation; // OBBの回転を表す3x3の行列
+};
+
+// キャラの関節の座標を格納する構造体
+typedef struct {
+    char type;      // 'r(右手)', 'l(左手)', 'R(右足)', 'L(左足)'など
+    float x;       
+    float y;        
+    float z;        
+} CharaJointData;
 
 /* キャラクタータイプ */
 typedef enum {
@@ -97,6 +115,18 @@ typedef struct CharaInfo_t {
     union {
         int restfst; // restの初期値
     };
+    bool isJumping;       // ジャンプ中かどうか
+    float jumpSpeed;      // ジャンプの速度
+    float rightArmRotation;  // 右腕の回転角度
+    float leftArmRotation;   // 左腕の回転角度
+    bool rightArmIncreasing; // 右腕の回転方向
+    bool leftArmIncreasing;  // 左腕の回転方向
+
+    // 足の回転角度と方向
+    float rightLegRotation;  // 右足の回転角度
+    float leftLegRotation;   // 左足の回転角度
+    bool rightLegIncreasing; // 右足の回転方向
+    bool leftLegIncreasing;  // 左足の回転方向
 } CharaInfo;
 
 
@@ -184,6 +214,7 @@ extern int enemyCount;
 //extern SDL_Joystick *joystick;	// ジョイスティックを特定・利用するための構造体
 extern int selectedOption;
 extern std::vector<Objdata> objDataArray;
+extern std::vector<Objdata> charaDataArray;
 extern float eye[3];
 extern float cnt[3];
 extern GLuint staticObjectList; // ディスプレイリストのID
@@ -194,6 +225,9 @@ extern int CenterY;
 extern float sphereRotationAngle;
 extern GLuint buildingTexture;
 extern GLuint skyTexture;
+extern GLuint selectTexture;
+extern float gCameraYaw;  // カメラの向きを表すグローバル変数
+extern std::unordered_map<std::string, std::vector<glm::vec3>> convexHullCache;
 
 /* 関数 */
 // game.cpp
@@ -201,7 +235,7 @@ int PrintError(const char* str);
 // system.cpp
 GLuint loadTexture(const char* path);
 void loadObjvalData(const std::string& filename, Objdata& obj);
-void loadObjData(const std::string& filename);
+Objdata loadObjData(const std::string& filename);
 std::vector<Objdata> loadAllObjData(const std::string& directoryPath);
 void makeObj(const Objdata& obj, float r, float g, float b, GLuint textureID);
 void initializeRendering();
@@ -217,6 +251,17 @@ void InitSystem();
 void createStaticObjectList();
 void drawFloorWithGrid();
 void drawCrosshair();
+void renderHead(float r, float g, float b);
+void renderBody(float r, float g, float b);
+void renderRightArm(float r, float g, float b);
+void renderLeftArm(float r, float g, float b);
+void renderRightLeg(float r, float g, float b);
+void renderLeftLeg(float r, float g, float b);
+void renderPlayer(float r, float g, float b);
+std::vector<glm::vec3> calculateConvexHullQhull(const std::vector<glm::vec3>& points);
+bool overlapOnAxis(const std::vector<glm::vec3>& hull1, const std::vector<glm::vec3>& hull2, const glm::vec3& axis);
+bool checkCollisionConvexHull(const std::vector<glm::vec3>& hull1, const std::vector<glm::vec3>& hull2);
+bool checkCollisionForPlayerParts(const CharaInfo* player, const std::vector<Objdata>& objects);
 // window.cpp
 
 /* end of system.h */

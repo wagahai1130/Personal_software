@@ -1,0 +1,13 @@
+glEnableClientestate
+glVertexPointer(1,Gl_float,0,頂点データ)
+glNormalPoointer(GL_float,flatデータ)
+glTexCoordPointer(2,GL_float,0,uv座標)
+glDrawArrays(GL_TLIANGLES,0,datasize*3)
+
+FILE *__DBL_HAS_QUIET_NAN__
+Vertex
+flat
+uv
+int vertexDataSize = 0
+int flatDatatSize
+int UVDataSize 

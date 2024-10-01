@@ -12,7 +12,7 @@
 // フレームレート計測用の変数
 std::chrono::time_point<std::chrono::steady_clock> startTime;
 int frameCount = 0;
-float gCameraYaw = 0.0f;
+float gCameraYaw = -90.0f;
 float cameraPitch = 0.0f;
 bool firstMouse = true;
 float lastX = 0.0f, lastY = 0.0f;
@@ -88,8 +88,8 @@ void handleMouseMotionEvent() {
     SDL_GetRelativeMouseState(&xOffset, &yOffset);
 
     // 感度の調整
-    float yawSensitivity = 0.1f;    // 横方向の感度（強め）
-    float pitchSensitivity = 0.01f;  // 縦方向の感度（弱め）
+    float yawSensitivity = 0.2f;    // 横方向の感度（強め）
+    float pitchSensitivity = 0.05f;  // 縦方向の感度（弱め）
     
     float yawOffset = -xOffset * yawSensitivity;
     float pitchOffset = yOffset * pitchSensitivity;
@@ -117,12 +117,14 @@ void displayFunc() {
     glCallList(staticObjectList);
     
     drawTexturedSphere(200.0f, skyTexture);
+    renderPlayer(0,0,0);
     drawCrosshair();
     SDL_GL_SwapWindow(window);
 }
 
 void updatePlayerPosition() {
     float moveSpeed = 0.1f;
+    float jumpForce = 0.2f;  // ジャンプ力
     float yawRadians = glm::radians(gCameraYaw);
 
     float forwardX = cos(yawRadians);
@@ -131,30 +133,149 @@ void updatePlayerPosition() {
     float rightX = cos(yawRadians + glm::radians(90.0f));
     float rightY = sin(yawRadians + glm::radians(90.0f));
 
+    bool isMoving = false;
+    float moveX = 0.0f;
+    float moveY = 0.0f;
+
+    // 現在のプレイヤーの位置を保存
+    float originalX = gGame.player->point.x;
+    float originalY = gGame.player->point.y;
+    float originalZ = gGame.player->point.z;
+
+    // プレイヤーの移動処理
     if (gGame.key.key_w) {
-        gGame.player->point.x += forwardX * moveSpeed;
-        gGame.player->point.y += forwardY * moveSpeed;
+        moveX += forwardX;
+        moveY += forwardY;
+        isMoving = true;
     }
     if (gGame.key.key_s) {
-        gGame.player->point.x -= forwardX * moveSpeed;
-        gGame.player->point.y -= forwardY * moveSpeed;
+        moveX -= forwardX;
+        moveY -= forwardY;
+        isMoving = true;
     }
     if (gGame.key.key_a) {
-        gGame.player->point.x += rightX * moveSpeed;
-        gGame.player->point.y += rightY * moveSpeed;
+        moveX += rightX;
+        moveY += rightY;
+        isMoving = true;
     }
     if (gGame.key.key_d) {
-        gGame.player->point.x -= rightX * moveSpeed;
-        gGame.player->point.y -= rightY * moveSpeed;
+        moveX -= rightX;
+        moveY -= rightY;
+        isMoving = true;
     }
 
-    eye[0] = gGame.player->point.x;
-    eye[1] = gGame.player->point.y;
-    eye[2] = gGame.player->point.z + 0.5;
+    // 移動ベクトルの正規化
+    float length = sqrt(moveX * moveX + moveY * moveY);
+    if (length > 0) {
+        moveX /= length;
+        moveY /= length;
+    }
+
+    // 正規化したベクトルに速度を掛けて移動
+    gGame.player->point.x += moveX * moveSpeed;
+    gGame.player->point.y += moveY * moveSpeed;
+
+
+    // ジャンプ処理
+    if (gGame.key.key_space && !gGame.player->isJumping) {
+        gGame.player->isJumping = true;
+        gGame.player->jumpSpeed = jumpForce;  // ジャンプ開始時の速度
+    }
+
+    if (gGame.player->isJumping) {
+        // ジャンプ中の処理
+        gGame.player->point.z += gGame.player->jumpSpeed;  // 上昇
+        gGame.player->jumpSpeed += GRAVITY;  // マクロ定義の重力を使用
+
+        // 地面に戻ったらジャンプ終了
+        if (gGame.player->point.z <= 0.0f) {
+            gGame.player->point.z = 0.0f;  // 地面に位置を固定
+            gGame.player->isJumping = false;
+            gGame.player->jumpSpeed = 0.0f;
+        }
+    }
+
+    // プレイヤーの各部位ごとの当たり判定を実施
+    if (checkCollisionForPlayerParts(gGame.player, objDataArray)) {
+        // 衝突が発生した場合、プレイヤーの位置を元に戻す
+        gGame.player->point.x = originalX;
+        gGame.player->point.y = originalY;
+        std::cout << "Collision detected, reverting player position." << std::endl;
+    }
+
+    // 手足の回転処理はここで復元
+    float armRotationSpeed = 2.0f;
+    float legRotationSpeed = 2.0f;
+
+    if (isMoving) {
+        // 右腕と左腕、右足と左足の回転処理は前と同じ
+        if (gGame.player->rightArmIncreasing) {
+            gGame.player->rightArmRotation += armRotationSpeed;
+            if (gGame.player->rightArmRotation > 30.0f) {
+                gGame.player->rightArmIncreasing = false;
+            }
+        } else {
+            gGame.player->rightArmRotation -= armRotationSpeed;
+            if (gGame.player->rightArmRotation < -30.0f) {
+                gGame.player->rightArmIncreasing = true;
+            }
+        }
+
+        if (gGame.player->leftArmIncreasing) {
+            gGame.player->leftArmRotation -= armRotationSpeed;
+            if (gGame.player->leftArmRotation < -30.0f) {
+                gGame.player->leftArmIncreasing = false;
+            }
+        } else {
+            gGame.player->leftArmRotation += armRotationSpeed;
+            if (gGame.player->leftArmRotation > 30.0f) {
+                gGame.player->leftArmIncreasing = true;
+            }
+        }
+
+        if (gGame.player->rightLegIncreasing) {
+            gGame.player->rightLegRotation -= legRotationSpeed;
+            if (gGame.player->rightLegRotation < -30.0f) {
+                gGame.player->rightLegIncreasing = false;
+            }
+        } else {
+            gGame.player->rightLegRotation += legRotationSpeed;
+            if (gGame.player->rightLegRotation > 30.0f) {
+                gGame.player->rightLegIncreasing = true;
+            }
+        }
+
+        if (gGame.player->leftLegIncreasing) {
+            gGame.player->leftLegRotation += legRotationSpeed;
+            if (gGame.player->leftLegRotation > 30.0f) {
+                gGame.player->leftLegIncreasing = false;
+            }
+        } else {
+            gGame.player->leftLegRotation -= legRotationSpeed;
+            if (gGame.player->leftLegRotation < -30.0f) {
+                gGame.player->leftLegIncreasing = true;
+            }
+        }
+    } else {
+        // 移動していない場合、手足の回転をリセット
+        gGame.player->rightArmRotation = 0.0f;
+        gGame.player->leftArmRotation = 0.0f;
+        gGame.player->rightLegRotation = 0.0f;
+        gGame.player->leftLegRotation = 0.0f;
+    }
+
+    // --- カメラの位置を更新 ---
+    float cameraDistance = 2.5f;
+    float pitchRadians = glm::radians(cameraPitch); 
+    eye[0] = gGame.player->point.x - forwardX * cameraDistance;
+    eye[1] = gGame.player->point.y - forwardY * cameraDistance;
+    eye[2] = gGame.player->point.z + 1.0f;
 
     cnt[0] = eye[0] + forwardX;
     cnt[1] = eye[1] + forwardY;
+    cnt[2] = eye[2] + sin(pitchRadians);
 }
+
 
 void idleFunc() {
     updatePlayerPosition();

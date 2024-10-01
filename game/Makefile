@@ -3,8 +3,8 @@ TEX = platex
 CFLAGS = -Wall -std=c++17 $(COPTIONS)
 LDFLAGS = 
 LOADLIBES = 
-CPPFLAGS = -I/home/vmware/software_g/c612301099/game/glm
-LDLIBS = -lm -lSDL2 -lSDL2_image -lSDL2_ttf -lGL -lGLU -lSDL2 -lSDL2_gfx -lglut
+CPPFLAGS = -I/home/vmware/software_g/c612301099/game/glm -I/usr/include/libqhull_r
+LDLIBS = -L/usr/lib/x86_64-linux-gnu -lqhull_r -lm -lSDL2 -lSDL2_image -lSDL2_ttf -lGL -lGLU -lSDL2 -lSDL2_gfx -lglut -lpthread
 
  
 # 実行時にライブラリが無い，と言われる場合は以下のオプションを追加
