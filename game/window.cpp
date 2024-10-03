@@ -8,114 +8,108 @@
 
 /* 変数 */
 int selected_weapon = -1;     // 選択された武器のインデックス
-float rotation_angle = 0.0f;  // 3Dキャラクターの回転角度
+float RotationAngle = 0.0f;  // 3Dキャラクターの回転角度
+float RotationSpeed = 2.5f;
 
 /* 関数 */
-void draw_background(GLuint texture);
 
 // 背景の描画
-void draw_background(GLuint texture) {
-    glEnable(GL_TEXTURE_2D);
-    glBindTexture(GL_TEXTURE_2D, texture);
+void draw_selectWindow(GLuint texture) {
+    obj = loadObjData("../select/select.txt");
+    //glPushMatrix();
+    makeObj(obj, 0, 0, 0, texture); 
+    //glRotatef(gCameraYaw - 90.0f, 0.0f, 0.0f, 1.0f); 
+    //glPopMatrix();
+}
 
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
-    gluOrtho2D(0, WD_Width, 0, WD_Height);
+void draw_selectErement(GLuint texture) {
+    obj = loadObjData("../select/select_element.txt");
+    makeObj(obj, 0, 0, 0, texture); 
+}
 
-    glMatrixMode(GL_MODELVIEW);
-    glLoadIdentity();
+void draw_weaponWindow(GLuint texture) {
+    obj = loadObjData("../select/selectWeapon.txt");
+    makeObj(obj, 0, 0, 0, texture); 
+}
 
-    glBegin(GL_QUADS);
-    glTexCoord2f(0.0f, 0.0f); glVertex2f(0.0f, 0.0f);
-    glTexCoord2f(1.0f, 0.0f); glVertex2f(WD_Width, 0.0f);
-    glTexCoord2f(1.0f, 1.0f); glVertex2f(WD_Width, WD_Height);
-    glTexCoord2f(0.0f, 1.0f); glVertex2f(0.0f, WD_Height);
-    glEnd();
-
-    glDisable(GL_TEXTURE_2D);
+void draw_weaponErement(GLuint texture) {
+    obj = loadObjData("../select/weapon_element.txt");
+    makeObj(obj, 0, 0, 0, texture); 
 }
 
 // 3Dキャラクターの描画
 void draw_3d_character() {
+    obj = loadObjData("../select/chara.txt");
     glPushMatrix();
-    glTranslatef(-gGame.player->point.x, -gGame.player->point.y, -gGame.player->point.z);
-    renderPlayer(0,0,0);
-    glRotatef(rotation_angle, 0.0f, 0.0f, 1.0f);  // z軸周りに回転
+    glTranslatef(-59.1f, -0.7f, -0.66f);
+    makeObj(obj, 1.0f, 1.0f, 1.0f, bodyTexture1); 
+    //glRotatef(RotationAngle, 0.0f, 0.0f, 1.0f);  // z軸周りに回転
     glPopMatrix();
 }
 
-// 武器選択UIの描画
-void draw_2d_ui() {
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
-    gluOrtho2D(0, WD_Width, 0, WD_Height);
-
+void setSelectcamera(){
+    // モデルビュー行列の設定
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
-
-    const int button_width = 100;
-    const int button_height = 50;
-    const int button_x = WD_Width - 150;
-    for (int i = 0; i < 4; i++) {
-        int button_y = WD_Height - (i + 1) * 60;  // ボタンのY座標
-
-        if (i == selected_weapon) {
-            glColor3f(1.0f, 1.0f, 0.0f);  // 選択された武器は黄色
-        } else {
-            glColor3f(1.0f, 1.0f, 1.0f);  // 他の武器は白
-        }
-
-        glBegin(GL_QUADS);
-        glVertex2f(button_x, button_y);
-        glVertex2f(button_x + button_width, button_y);
-        glVertex2f(button_x + button_width, button_y + button_height);
-        glVertex2f(button_x, button_y + button_height);
-        glEnd();
-    }
+    gluLookAt(-58.4634, -2.5637, -0.05,    // カメラの位置
+              -58.4634, -2.136, -0.05,        // 注視点
+              0.0, 0.0, 1.0);                // 上方向
 }
 
 // 描画処理
-void display() {
+void display_select() {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
+    glDisable(GL_TEXTURE_2D);
+    glDisable(GL_LIGHTING);
+    setSelectcamera();
+    glColor3f(0.0f, 0.0f, 0.0f);
     // 背景の描画
-    draw_background();
-    gluLookAt(0.0, -1.0, 0.0,    // カメラの位置
-              0.0, 0.0, 0.0,                 // 注視点
-              0.0, 0.0, 1.0);                // 上方向
+    draw_selectWindow(skyTexture);
+    draw_selectErement(elementTexture);
     // 3Dキャラクターの描画
-    rotation_angle += 0.5f;
-    draw_3d_character();
-
-    // 2D UIの描画
-    draw_2d_ui();
-
-    glutSwapBuffers();
-}
-
-// マウスクリックによる武器選択処理
-void handle_mouse_click(int button, int state, int x, int y) {
-    if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
-        const int button_width = 100;
-        const int button_height = 50;
-        const int button_x = WD_Width - 150;
-
-        for (int i = 0; i < 4; i++) {
-            int button_y = WD_Height - (i + 1) * 60;
-
-            // マウスクリックがボタンの範囲内か判定
-            if (x >= button_x && x <= button_x + button_width &&
-                (WD_Height - y) >= button_y && (WD_Height - y) <= button_y + button_height) {
-                selected_weapon = i;  // 選択された武器のインデックスを更新
-                printf("Weapon %d selected\n", selected_weapon);
-            }
-        }
+    RotationAngle += RotationSpeed * deltaTime;   // 回転速度を調整
+    if (RotationAngle >= 360.0f) {
+        RotationAngle -= 360.0f;
     }
+    draw_3d_character();
+    glEnable(GL_TEXTURE_2D);
+
+    SDL_GL_SwapWindow(window);
 }
 
 void selectWeapon() {
-    glutDisplayFunc(display);        // 描画関数
-    glutMouseFunc(handle_mouse_click);  // マウスクリック処理
-    glutMainLoop();  // メインループ
+    bool running = true;  // ループを制御するためのフラグ
+
+    // イベントループの開始
+    while (running) {
+        SDL_Event event;
+        while (SDL_PollEvent(&event)) {
+            // イベントがキューにある間はそれを処理
+            if (event.type == SDL_QUIT) {
+                running = false;
+            }
+            if (event.type == SDL_KEYDOWN) {
+                // キーが押されたときの処理
+                if (event.key.keysym.sym == SDLK_ESCAPE) {
+                    running = false;  // ループを終了
+                }
+            }
+            if (event.type == SDL_MOUSEBUTTONDOWN) {
+                // マウスクリックの処理
+                int x, y;
+                SDL_GetMouseState(&x, &y);
+            }
+        }
+
+        // 描画処理
+        display_select();
+
+        // 画面更新を遅らせるために少し待機
+        //SDL_Delay(16);  // 16ms = 約60FPS
+    }
+
+    // SDLのクリーンアップ
+    SDL_Quit();
 }
+
 

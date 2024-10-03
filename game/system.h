@@ -30,7 +30,7 @@ extern "C" {
 
 /* 時間,距離など */
 #define NORMAL_VELOCITY 500 // 通常の移動速度
-#define GRAVITY -0.02f  // 重力の値
+#define GRAVITY -18.0f  // 重力の値
 
 /* オブジェクトのデータを格納する構造体*/
 struct Objdata {
@@ -206,6 +206,8 @@ typedef struct {
 extern GameInfo gGame;
 extern CharaTypeInfo gCharaType[CHARATYPE_NUM];
 extern CharaInfo* gChara;
+extern SDL_Window* window;
+extern SDL_GLContext context;
 extern int gCharaNum; // キャラ総数
 extern int gWeaponNum; // 武器総数
 extern CharaInfo* enemies;
@@ -215,6 +217,7 @@ extern int enemyCount;
 extern int selectedOption;
 extern std::vector<Objdata> objDataArray;
 extern std::vector<Objdata> charaDataArray;
+extern Objdata obj;
 extern float eye[3];
 extern float cnt[3];
 extern GLuint staticObjectList; // ディスプレイリストのID
@@ -228,6 +231,10 @@ extern GLuint skyTexture;
 extern GLuint selectTexture;
 extern float gCameraYaw;  // カメラの向きを表すグローバル変数
 extern std::unordered_map<std::string, std::vector<glm::vec3>> convexHullCache;
+extern GLuint charaTexture1;
+extern GLuint bodyTexture1;
+extern GLuint elementTexture;
+extern float deltaTime;
 
 /* 関数 */
 // game.cpp
@@ -263,5 +270,10 @@ bool overlapOnAxis(const std::vector<glm::vec3>& hull1, const std::vector<glm::v
 bool checkCollisionConvexHull(const std::vector<glm::vec3>& hull1, const std::vector<glm::vec3>& hull2);
 bool checkCollisionForPlayerParts(const CharaInfo* player, const std::vector<Objdata>& objects);
 // window.cpp
-
+void draw_background(GLuint texture);
+void draw_3d_character();
+void draw_2d_ui();
+void display();
+void handle_mouse_click(int button, int state, int x, int y); 
+void selectWeapon();
 /* end of system.h */

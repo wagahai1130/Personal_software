@@ -17,9 +17,20 @@ float cameraPitch = 0.0f;
 bool firstMouse = true;
 float lastX = 0.0f, lastY = 0.0f;
 int CenterX, CenterY;
+float SphereRotationSpeed = 2.5f; 
+// フレームごとの経過時間を保持する変数
+Uint32 lastFrameTime = 0; // 前フレームの時刻
+float deltaTime = 0.0f;    // 経過時間
 
 SDL_Window* window;
 SDL_GLContext context;
+
+// 経過時間を計算する関数
+void calculateDeltaTime() {
+    Uint32 currentFrameTime = SDL_GetTicks();  // 現在のフレームの時刻を取得
+    deltaTime = (currentFrameTime - lastFrameTime) / 1000.0f;  // ミリ秒を秒に変換
+    lastFrameTime = currentFrameTime;  // 次フレームのために現在時刻を保存
+}
 
 void handleKeyboardEvent(const SDL_Event& event) {
     if (event.type == SDL_KEYDOWN) {
@@ -123,8 +134,8 @@ void displayFunc() {
 }
 
 void updatePlayerPosition() {
-    float moveSpeed = 0.1f;
-    float jumpForce = 0.2f;  // ジャンプ力
+    float moveSpeed = 5.0f;
+    float jumpForce = 5.0f;  // ジャンプ力
     float yawRadians = glm::radians(gCameraYaw);
 
     float forwardX = cos(yawRadians);
@@ -172,9 +183,8 @@ void updatePlayerPosition() {
     }
 
     // 正規化したベクトルに速度を掛けて移動
-    gGame.player->point.x += moveX * moveSpeed;
-    gGame.player->point.y += moveY * moveSpeed;
-
+    gGame.player->point.x += moveX * moveSpeed * deltaTime;
+    gGame.player->point.y += moveY * moveSpeed * deltaTime;
 
     // ジャンプ処理
     if (gGame.key.key_space && !gGame.player->isJumping) {
@@ -184,8 +194,8 @@ void updatePlayerPosition() {
 
     if (gGame.player->isJumping) {
         // ジャンプ中の処理
-        gGame.player->point.z += gGame.player->jumpSpeed;  // 上昇
-        gGame.player->jumpSpeed += GRAVITY;  // マクロ定義の重力を使用
+        gGame.player->point.z += gGame.player->jumpSpeed * deltaTime;  // ジャンプ中の移動にdeltaTimeを掛ける
+        gGame.player->jumpSpeed += GRAVITY * deltaTime; // マクロ定義の重力を使用
 
         // 地面に戻ったらジャンプ終了
         if (gGame.player->point.z <= 0.0f) {
@@ -204,54 +214,54 @@ void updatePlayerPosition() {
     }
 
     // 手足の回転処理はここで復元
-    float armRotationSpeed = 2.0f;
-    float legRotationSpeed = 2.0f;
+    float armRotationSpeed = 100.0f;
+    float legRotationSpeed = 100.0f;
 
     if (isMoving) {
         // 右腕と左腕、右足と左足の回転処理は前と同じ
         if (gGame.player->rightArmIncreasing) {
-            gGame.player->rightArmRotation += armRotationSpeed;
+            gGame.player->rightArmRotation += armRotationSpeed * deltaTime;
             if (gGame.player->rightArmRotation > 30.0f) {
                 gGame.player->rightArmIncreasing = false;
             }
         } else {
-            gGame.player->rightArmRotation -= armRotationSpeed;
+            gGame.player->rightArmRotation -= armRotationSpeed * deltaTime;
             if (gGame.player->rightArmRotation < -30.0f) {
                 gGame.player->rightArmIncreasing = true;
             }
         }
 
         if (gGame.player->leftArmIncreasing) {
-            gGame.player->leftArmRotation -= armRotationSpeed;
+            gGame.player->leftArmRotation -= armRotationSpeed * deltaTime;
             if (gGame.player->leftArmRotation < -30.0f) {
                 gGame.player->leftArmIncreasing = false;
             }
         } else {
-            gGame.player->leftArmRotation += armRotationSpeed;
+            gGame.player->leftArmRotation += armRotationSpeed * deltaTime;
             if (gGame.player->leftArmRotation > 30.0f) {
                 gGame.player->leftArmIncreasing = true;
             }
         }
 
         if (gGame.player->rightLegIncreasing) {
-            gGame.player->rightLegRotation -= legRotationSpeed;
+            gGame.player->rightLegRotation -= legRotationSpeed * deltaTime;
             if (gGame.player->rightLegRotation < -30.0f) {
                 gGame.player->rightLegIncreasing = false;
             }
         } else {
-            gGame.player->rightLegRotation += legRotationSpeed;
+            gGame.player->rightLegRotation += legRotationSpeed * deltaTime;
             if (gGame.player->rightLegRotation > 30.0f) {
                 gGame.player->rightLegIncreasing = true;
             }
         }
 
         if (gGame.player->leftLegIncreasing) {
-            gGame.player->leftLegRotation += legRotationSpeed;
+            gGame.player->leftLegRotation += legRotationSpeed * deltaTime;
             if (gGame.player->leftLegRotation > 30.0f) {
                 gGame.player->leftLegIncreasing = false;
             }
         } else {
-            gGame.player->leftLegRotation -= legRotationSpeed;
+            gGame.player->leftLegRotation -= legRotationSpeed * deltaTime;
             if (gGame.player->leftLegRotation < -30.0f) {
                 gGame.player->leftLegIncreasing = true;
             }
@@ -278,9 +288,10 @@ void updatePlayerPosition() {
 
 
 void idleFunc() {
+    calculateDeltaTime(); // 毎フレームの経過時間を計算
     updatePlayerPosition();
     // 球体の回転角度を更新
-    sphereRotationAngle += 0.025f;  // 回転速度を調整
+    sphereRotationAngle += SphereRotationSpeed * deltaTime;   // 回転速度を調整
     if (sphereRotationAngle >= 360.0f) {
         sphereRotationAngle -= 360.0f;
     }
@@ -288,6 +299,7 @@ void idleFunc() {
 }
 
 int main(int argc, char** argv) {
+    glutInit(&argc, argv);
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
         std::cerr << "SDL could not initialize! SDL_Error: " << SDL_GetError() << std::endl;
         return -1;
@@ -310,18 +322,22 @@ int main(int argc, char** argv) {
         exit(1);
     }
 
+    lastFrameTime = SDL_GetTicks(); // 初期フレームの時刻を設定
+
     if (SDL_GL_SetSwapInterval(1) < 0) {
         std::cerr << "Warning: Unable to set VSync! SDL Error: " << SDL_GetError() << std::endl;
-    }
-    // 相対モードを有効にする
-    if (SDL_SetRelativeMouseMode(SDL_TRUE) != 0) {
-        std::cerr << "Failed to enable relative mouse mode: " << SDL_GetError() << std::endl;
-        return -1;
     }
 
     InitSystem();
     InitWindow(window, context);
     
+    //selectWeapon();
+
+    // 相対モードを有効にする
+    if (SDL_SetRelativeMouseMode(SDL_TRUE) != 0) {
+        std::cerr << "Failed to enable relative mouse mode: " << SDL_GetError() << std::endl;
+        return -1;
+    }
     createStaticObjectList();
 
     bool running = true;

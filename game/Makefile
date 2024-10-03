@@ -13,7 +13,7 @@ LDLIBS = -L/usr/lib/x86_64-linux-gnu -lqhull_r -lm -lSDL2 -lSDL2_image -lSDL2_tt
 #LDLIBS = -lm -lSDL2 -ljoyconlib -lhidapi-hidraw 
 
 TARGET = game
-OBJS = $(TARGET).o system.o window.o 
+OBJS = $(TARGET).o system.o # window.o 
 HEADS = system.h
 
 # 課題に取り組むにはこのターゲットで

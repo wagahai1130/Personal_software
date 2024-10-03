@@ -28,6 +28,7 @@ GLuint skyTexture;
 GLuint charaTexture1;
 GLuint bodyTexture1;
 GLuint selectTexture;
+GLuint elementTexture;
 Objdata obj;
 // 凸包のキャッシュ
 std::unordered_map<std::string, std::vector<glm::vec3>> convexHullCache;
@@ -66,7 +67,7 @@ void drawCrosshair();
 
 void InitWindow(SDL_Window*& window, SDL_GLContext& context) {
     SDL_Init(SDL_INIT_VIDEO);
-
+    
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
@@ -321,6 +322,7 @@ void initializeRendering() {
     charaTexture1 = loadTexture("../texture/face1.png");
     bodyTexture1 = loadTexture("../texture/body1.png");
     selectTexture = loadTexture("./texture/select.jpg"); 
+    elementTexture = loadTexture("./texture/element.jpg");
     std::cout << "Total loaded objects: " << objDataArray.size() << std::endl;
     std::cout << "Total loaded charaData: " << charaDataArray.size() << std::endl;
 }
