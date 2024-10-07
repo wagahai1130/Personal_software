@@ -62,9 +62,9 @@ typedef struct {
 
 /* 銃弾の初期座標を格納する構造体 */
 typedef struct {
-    double x;
-    double y;
-    double z;
+    float x;
+    float y;
+    float z;
 } Data;
 
 /* キャラクタータイプ */
@@ -266,7 +266,8 @@ extern GLuint gun_arm_subTexture;
 extern GLuint swordTexture;
 extern float deltaTime;
 extern Uint32 lastFrameTime;
-extern Data Bulletdata;
+extern Data AK47_bulletdata;
+extern Data AWP_bulletdata;
 
 /* 関数 */
 // game.cpp

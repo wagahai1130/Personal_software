@@ -32,8 +32,10 @@ GLuint elementTexture;
 GLuint redTexture;
 GLuint gun_arm_subTexture;
 GLuint swordTexture;
+GLuint bulletTexture;
 Objdata obj;
-Data Bulletdata;
+Data AK47_bulletdata;
+Data AWP_bulletdata;
 // 凸包のキャッシュ
 std::unordered_map<std::string, std::vector<glm::vec3>> convexHullCache;
 
@@ -121,7 +123,7 @@ int read_data_from_file(const char *filename, Data *data) {
     }
 
     // ファイルから3つの浮動小数点数を読み取る
-    if (fscanf(file, "%lf,%lf,%lf", &data->x, &data->y, &data->z) != 3) {
+    if (fscanf(file, "%f,%f,%f", &data->x, &data->y, &data->z) != 3) {
         fprintf(stderr, "Error reading data from file\n");
         fclose(file);
         return -1;  // データの読み取りに失敗した場合
@@ -349,6 +351,9 @@ void initializeRendering() {
     redTexture = loadTexture("../texture/red.jpg");
     gun_arm_subTexture = loadTexture("../texture/gun_arm.jpg");
     swordTexture = loadTexture("../texture/sword.jpg");
+    bulletTexture = loadTexture("../texture/bullet.jpg");
+    read_data_from_file("../weapon/AK-47_bulletPos.txt", AK47_bulletdata);
+    read_data_from_file("../weapon/AWP_bulletPos.txt", AWP_bulletdata);
     std::cout << "Total loaded objects: " << objDataArray.size() << std::endl;
     std::cout << "Total loaded charaData: " << charaDataArray.size() << std::endl;
 }
@@ -514,6 +519,32 @@ void renderPlayer(float r, float g, float b){
     renderRightLeg(r, g, b);
     renderLeftLeg(r, g, b);
 
+    glEnable(GL_TEXTURE_2D);
+    glEnable(GL_LIGHTING);
+}
+
+void createBullet(float r, float g, float b){
+    glDisable(GL_TEXTURE_2D);
+    glDisable(GL_LIGHTING);
+    glColor3f(0.0f, 0.0f, 0.0f);
+    if(gGame.player->weapon.AK_47 == SDL_TRUE){
+        obj = loadObjData("../weapon/AK-47_bullet.txt");  
+        texture = bulletTexture;  
+        glPushMatrix();
+
+        glTranslatef(gGame.player->point.x + AK47_bulletdata.x, gGame.player->point.y + AK47_bulletdata.y, gGame.player->point.z + AK47_bulletdata.z);
+        makeObj(obj, r, g, b, texture);
+        glPopMatrix();
+    }
+    else if(gGame.player->weapon.AWP == SDL_TRUE){
+        obj = loadObjData("../weapon/AWP_bullet.txt");  
+        texture = bulletTexture;  
+        glPushMatrix();
+
+        glTranslatef(gGame.player->point.x + AWP_bulletdata.x, gGame.player->point.y + AWP_bulletdata.y, gGame.player->point.z + AWP_bulletdata.z);
+        makeObj(obj, r, g, b, texture);
+        glPopMatrix();
+    }
     glEnable(GL_TEXTURE_2D);
     glEnable(GL_LIGHTING);
 }
