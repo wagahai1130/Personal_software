@@ -9984,3 +9984,633 @@
 1097^done
 (gdb) 
 ^exit
+(gdb) 
+1001^done
+(gdb) 
+1002^done
+(gdb) 
+=cmd-param-changed,param="pagination",value="off"
+1003^done
+(gdb) 
+1004^done
+(gdb) 
+1005^done
+(gdb) 
+1006^done
+(gdb) 
+1007^done
+(gdb) 
+1008^done
+(gdb) 
+~"The target architecture is set automatically (currently i386:x86-64)\n"
+1009^done
+(gdb) 
+1010^done,bkpt={number="1",type="breakpoint",disp="keep",enabled="y",addr="0x000000000000617e",func="main(int, char**)",file="game.cpp",fullname="/home/vmware/software_g/c612301099/game/game.cpp",line="301",thread-groups=["i1"],times="0",original-location="main"}
+(gdb) 
+1011^done
+(gdb) 
+1012^done,bkpt={number="2",type="breakpoint",disp="keep",enabled="y",addr="0x0000000000035c9c",func="draw_3d_character()",file="window.cpp",fullname="/home/vmware/software_g/c612301099/game/window.cpp",line="205",thread-groups=["i1"],times="0",original-location="window.cpp:205"}
+(gdb) 
+1013^done,lines=[{pc="0x00000000000340b7",line="22"},{pc="0x00000000000340c4",line="24"},{pc="0x00000000000340d1",line="25"},{pc="0x00000000000340de",line="28"},{pc="0x00000000000340e5",line="28"},{pc="0x00000000000340e9",line="28"},{pc="0x00000000000340ed",line="29"},{pc="0x00000000000340f4",line="29"},{pc="0x00000000000340f9",line="29"},{pc="0x0000000000034103",line="29"},{pc="0x000000000003410a",line="29"},{pc="0x0000000000034113",line="30"},{pc="0x000000000003411a",line="30"},{pc="0x000000000003411f",line="30"},{pc="0x0000000000034128",line="31"},{pc="0x000000000003412f",line="31"},{pc="0x0000000000034135",line="34"},{pc="0x000000000003413c",line="34"},{pc="0x0000000000034141",line="34"},{pc="0x000000000003414b",line="34"},{pc="0x0000000000034152",line="34"},{pc="0x000000000003415b",line="35"},{pc="0x0000000000034162",line="35"},{pc="0x0000000000034167",line="35"},{pc="0x0000000000034174",line="36"},{pc="0x000000000003417b",line="36"},{pc="0x000000000003417f",line="41"},{pc="0x0000000000034186",line="41"},{pc="0x000000000003418a",line="41"},{pc="0x000000000003418e",line="42"},{pc="0x0000000000034195",line="42"},{pc="0x000000000003419a",line="42"},{pc="0x00000000000341a4",line="42"},{pc="0x00000000000341ab",line="42"},{pc="0x00000000000341b4",line="43"},{pc="0x00000000000341bb",line="43"},{pc="0x00000000000341c0",line="43"},{pc="0x00000000000341cd",line="44"},{pc="0x00000000000341d4",line="44"},{pc="0x00000000000341da",line="47"},{pc="0x00000000000341e1",line="47"},{pc="0x00000000000341e6",line="47"},{pc="0x00000000000341f0",line="47"},{pc="0x00000000000341f7",line="47"},{pc="0x0000000000034200",line="48"},{pc="0x0000000000034207",line="48"},{pc="0x000000000003420c",line="48"},{pc="0x0000000000034215",line="49"},{pc="0x000000000003421c",line="49"},{pc="0x0000000000034220",line="54"},{pc="0x0000000000034227",line="54"},{pc="0x000000000003422b",line="54"},{pc="0x000000000003422f",line="55"},{pc="0x0000000000034236",line="55"},{pc="0x000000000003423b",line="55"},{pc="0x0000000000034245",line="55"},{pc="0x000000000003424c",line="55"},{pc="0x0000000000034255",line="56"},{pc="0x000000000003425c",line="56"},{pc="0x0000000000034261",line="56"},{pc="0x000000000003426e",line="57"},{pc="0x0000000000034275",line="57"},{pc="0x000000000003427b",line="60"},{pc="0x0000000000034282",line="60"},{pc="0x0000000000034287",line="60"},{pc="0x0000000000034291",line="60"},{pc="0x0000000000034298",line="60"},{pc="0x00000000000342a1",line="61"},{pc="0x00000000000342a8",line="61"},{pc="0x00000000000342ad",line="61"},{pc="0x00000000000342b6",line="62"},{pc="0x00000000000342bd",line="62"},{pc="0x00000000000342c1",line="67"},{pc="0x00000000000342c8",line="67"},{pc="0x00000000000342cc",line="67"},{pc="0x00000000000342d0",line="68"},{pc="0x00000000000342d7",line="68"},{pc="0x00000000000342dc",line="68"},{pc="0x00000000000342e6",line="68"},{pc="0x00000000000342ed",line="68"},{pc="0x00000000000342f6",line="69"},{pc="0x00000000000342fd",line="69"},{pc="0x0000000000034302",line="69"},{pc="0x000000000003430b",line="78"},{pc="0x000000000003430d",line="70"},{pc="0x0000000000034314",line="70"},{pc="0x0000000000034318",line="78"},{pc="0x000000000003431a",line="73"},{pc="0x0000000000034321",line="73"},{pc="0x0000000000034326",line="73"},{pc="0x0000000000034330",line="73"},{pc="0x0000000000034337",line="73"},{pc="0x0000000000034340",line="74"},{pc="0x0000000000034347",line="74"},{pc="0x000000000003434c",line="74"},{pc="0x0000000000034359",line="78"},{pc="0x000000000003435b",line="75"},{pc="0x0000000000034362",line="75"},{pc="0x0000000000034366",line="78"},{pc="0x0000000000034369",line="81"},{pc="0x000000000003437f",line="81"},{pc="0x000000000003438e",line="82"},{pc="0x0000000000034416",line="83"},{pc="0x0000000000034436",line="84"},{pc="0x000000000003444f",line="82"},{pc="0x0000000000034481",line="84"},{pc="0x0000000000034490",line="86"},{pc="0x00000000000344a6",line="86"},{pc="0x00000000000344b5",line="88"},{pc="0x00000000000344ce",line="91"},{pc="0x00000000000344d4",line="91"},{pc="0x0000000000034512",line="93"},{pc="0x000000000003459a",line="94"},{pc="0x00000000000345cb",line="96"},{pc="0x00000000000345d1",line="96"},{pc="0x000000000003460f",line="98"},{pc="0x0000000000034697",line="99"},{pc="0x00000000000346c8",line="101"},{pc="0x00000000000346ce",line="101"},{pc="0x000000000003470c",line="103"},{pc="0x0000000000034794",line="104"},{pc="0x00000000000347c5",line="106"},{pc="0x00000000000347cb",line="106"},{pc="0x0000000000034809",line="108"},{pc="0x0000000000034891",line="109"},{pc="0x00000000000348bd",line="112"},{pc="0x0000000000034945",line="113"},{pc="0x000000000003494a",line="114"},{pc="0x0000000000034963",line="115"},{pc="0x000000000003498f",line="116"},{pc="0x0000000000034994",line="118"},{pc="0x0000000000034a1c",line="119"},{pc="0x0000000000034a48",line="121"},{pc="0x0000000000034ad0",line="122"},{pc="0x0000000000034afc",line="124"},{pc="0x0000000000034b84",line="125"},{pc="0x0000000000034bb0",line="127"},{pc="0x0000000000034c38",line="128"},{pc="0x0000000000034c64",line="129"},{pc="0x0000000000034c84",line="93"},{pc="0x0000000000034cbd",line="98"},{pc="0x0000000000034cf6",line="103"},{pc="0x0000000000034d2f",line="108"},{pc="0x0000000000034d68",line="112"},{pc="0x0000000000034da1",line="118"},{pc="0x0000000000034dda",line="121"},{pc="0x0000000000034e13",line="124"},{pc="0x0000000000034e4c",line="127"},{pc="0x0000000000034e7e",line="129"},{pc="0x0000000000034e8d",line="131"},{pc="0x0000000000034ea3",line="131"},{pc="0x0000000000034eb2",line="133"},{pc="0x0000000000034ecb",line="135"},{pc="0x0000000000034ed1",line="135"},{pc="0x0000000000034f0f",line="137"},{pc="0x0000000000034f97",line="138"},{pc="0x0000000000034fc8",line="140"},{pc="0x0000000000034fce",line="140"},{pc="0x000000000003500c",line="142"},{pc="0x0000000000035094",line="143"},{pc="0x00000000000350c5",line="145"},{pc="0x00000000000350cb",line="145"},{pc="0x0000000000035109",line="147"},{pc="0x0000000000035191",line="148"},{pc="0x00000000000351c2",line="150"},{pc="0x00000000000351c8",line="150"},{pc="0x0000000000035206",line="152"},{pc="0x000000000003528e",line="153"},{pc="0x00000000000352bf",line="155"},{pc="0x00000000000352c5",line="155"},{pc="0x0000000000035303",line="157"},{pc="0x000000000003538b",line="158"},{pc="0x00000000000353b7",line="160"},{pc="0x000000000003543f",line="161"},{pc="0x0000000000035444",line="162"},{pc="0x000000000003545d",line="163"},{pc="0x0000000000035489",line="164"},{pc="0x000000000003548e",line="166"},{pc="0x0000000000035516",line="167"},{pc="0x0000000000035542",line="169"},{pc="0x00000000000355ca",line="170"},{pc="0x00000000000355f6",line="172"},{pc="0x000000000003567e",line="173"},{pc="0x00000000000356aa",line="175"},{pc="0x0000000000035732",line="176"},{pc="0x000000000003575e",line="178"},{pc="0x00000000000357e6",line="179"},{pc="0x0000000000035812",line="180"},{pc="0x0000000000035832",line="137"},{pc="0x000000000003586b",line="142"},{pc="0x00000000000358a4",line="147"},{pc="0x00000000000358dd",line="152"},{pc="0x0000000000035916",line="157"},{pc="0x000000000003594f",line="160"},{pc="0x0000000000035988",line="166"},{pc="0x00000000000359c1",line="169"},{pc="0x00000000000359fa",line="172"},{pc="0x0000000000035a33",line="175"},{pc="0x0000000000035a6c",line="178"},{pc="0x0000000000035a9e",line="180"},{pc="0x0000000000035aad",line="183"},{pc="0x0000000000035abd",line="183"},{pc="0x0000000000035acc",line="184"},{pc="0x0000000000035ad1",line="185"},{pc="0x0000000000035aee",line="188"},{pc="0x0000000000035b0d",line="191"},{pc="0x0000000000035b95",line="192"},{pc="0x0000000000035b9a",line="193"},{pc="0x0000000000035bc6",line="194"},{pc="0x0000000000035bcb",line="197"},{pc="0x0000000000035c53",line="198"},{pc="0x0000000000035c58",line="199"},{pc="0x0000000000035c84",line="200"},{pc="0x0000000000035c89",line="204"},{pc="0x0000000000035c9c",line="205"},{pc="0x0000000000035d24",line="206"},{pc="0x0000000000035d35",line="209"},{pc="0x0000000000035dbd",line="210"},{pc="0x0000000000035dc9",line="212"},{pc="0x0000000000035dce",line="213"},{pc="0x0000000000035de7",line="214"},{pc="0x0000000000035dee",line="214"},{pc="0x0000000000035e0a",line="215"},{pc="0x0000000000035e23",line="216"},{pc="0x0000000000035e4f",line="217"},{pc="0x0000000000035e54",line="220"},{pc="0x0000000000035edc",line="221"},{pc="0x0000000000035ee1",line="222"},{pc="0x0000000000035efa",line="223"},{pc="0x0000000000035f1d",line="224"},{pc="0x0000000000035f36",line="225"},{pc="0x0000000000035f62",line="226"},{pc="0x0000000000035f67",line="229"},{pc="0x0000000000035fef",line="230"},{pc="0x0000000000035ff4",line="231"},{pc="0x000000000003600d",line="232"},{pc="0x0000000000036030",line="233"},{pc="0x0000000000036049",line="234"},{pc="0x0000000000036075",line="235"},{pc="0x000000000003607a",line="238"},{pc="0x0000000000036102",line="239"},{pc="0x0000000000036107",line="240"},{pc="0x0000000000036120",line="241"},{pc="0x0000000000036143",line="242"},{pc="0x000000000003615c",line="243"},{pc="0x0000000000036188",line="244"},{pc="0x000000000003618d",line="246"},{pc="0x0000000000036192",line="247"},{pc="0x00000000000361b2",line="191"},{pc="0x00000000000361eb",line="197"},{pc="0x0000000000036224",line="205"},{pc="0x000000000003625d",line="209"},{pc="0x0000000000036296",line="220"},{pc="0x00000000000362cf",line="229"},{pc="0x0000000000036308",line="238"},{pc="0x000000000003633a",line="247"},{pc="0x0000000000036349",line="249"},{pc="0x0000000000036351",line="251"},{pc="0x000000000003635b",line="252"},{pc="0x0000000000036360",line="253"},{pc="0x00000000000363bb",line="256"},{pc="0x00000000000363be",line="259"},{pc="0x00000000000363c6",line="260"},{pc="0x00000000000363d0",line="261"},{pc="0x00000000000363da",line="262"},{pc="0x00000000000363e4",line="264"},{pc="0x00000000000363e9",line="265"},{pc="0x00000000000363fa",line="268"},{pc="0x0000000000036407",line="269"},{pc="0x0000000000036411",line="269"},{pc="0x0000000000036431",line="270"},{pc="0x000000000003643d",line="271"},{pc="0x0000000000036447",line="271"},{pc="0x000000000003644c",line="272"},{pc="0x0000000000036456",line="275"},{pc="0x0000000000036465",line="278"},{pc="0x0000000000036479",line="278"},{pc="0x000000000003648d",line="279"},{pc="0x0000000000036495",line="279"},{pc="0x000000000003649e",line="280"},{pc="0x00000000000364ba",line="282"},{pc="0x00000000000364bf",line="284"},{pc="0x00000000000364c9",line="285"},{pc="0x00000000000364d3",line="286"},{pc="0x00000000000364e2",line="287"},{pc="0x00000000000364e5",line="290"},{pc="0x00000000000364f1",line="290"},{pc="0x0000000000036500",line="291"},{pc="0x0000000000036504",line="293"},{pc="0x0000000000036509",line="293"},{pc="0x000000000003650f",line="295"},{pc="0x0000000000036519",line="297"},{pc="0x0000000000036525",line="297"},{pc="0x0000000000036532",line="299"},{pc="0x0000000000036535",line="299"},{pc="0x000000000003653c",line="300"},{pc="0x0000000000036541",line="302"},{pc="0x0000000000036544",line="302"},{pc="0x000000000003654b",line="304"},{pc="0x000000000003654e",line="304"},{pc="0x0000000000036553",line="305"},{pc="0x0000000000036557",line="306"},{pc="0x000000000003655c",line="309"},{pc="0x000000000003655f",line="309"},{pc="0x0000000000036566",line="312"},{pc="0x0000000000036579",line="313"},{pc="0x000000000003657c",line="313"},{pc="0x00000000000365a1",line="314"},{pc="0x00000000000365a8",line="315"},{pc="0x00000000000365b1",line="317"},{pc="0x00000000000365b4",line="317"},{pc="0x00000000000365d9",line="319"},{pc="0x00000000000365e5",line="321"},{pc="0x00000000000365e8",line="321"},{pc="0x000000000003661c",line="323"},{pc="0x0000000000036625",line="326"},{pc="0x0000000000036628",line="326"},{pc="0x000000000003664d",line="328"},{pc="0x0000000000036654",line="328"},{pc="0x000000000003665b",line="329"},{pc="0x0000000000036662",line="329"},{pc="0x000000000003666b",line="330"},{pc="0x0000000000036672",line="330"},{pc="0x000000000003667b",line="331"},{pc="0x0000000000036682",line="331"},{pc="0x000000000003668b",line="332"},{pc="0x0000000000036692",line="332"},{pc="0x000000000003669b",line="335"},{pc="0x00000000000366b4",line="297"},{pc="0x00000000000366b9",line="338"},{pc="0x00000000000366be",line="340"},{pc="0x00000000000366c3",line="295"},{pc="0x00000000000366c8",line="345"},{pc="0x00000000000366d2",line="346"},{pc="0x00000000000366e9",line="346"},{pc="0x00000000000366fb",line="346"},{pc="0x000000000003670a",line="0"},{pc="0x0000000000036733",line="13"},{pc="0x0000000000036759",line="346"},{pc="0x000000000003675c",line="346"},{pc="0x0000000000036764",line="346"},{pc="0x0000000000036775",line="0"}]
+(gdb) 
+=thread-group-started,id="i1",pid="5059"
+=thread-created,id="1",group-id="i1"
+=breakpoint-modified,bkpt={number="1",type="breakpoint",disp="keep",enabled="y",addr="0x000055555555a17e",func="main(int, char**)",file="game.cpp",fullname="/home/vmware/software_g/c612301099/game/game.cpp",line="301",thread-groups=["i1"],times="0",original-location="main"}
+=breakpoint-modified,bkpt={number="2",type="breakpoint",disp="keep",enabled="y",addr="0x0000555555589c9c",func="draw_3d_character()",file="window.cpp",fullname="/home/vmware/software_g/c612301099/game/window.cpp",line="205",thread-groups=["i1"],times="0",original-location="window.cpp:205"}
+=library-loaded,id="/lib64/ld-linux-x86-64.so.2",target-name="/lib64/ld-linux-x86-64.so.2",host-name="/lib64/ld-linux-x86-64.so.2",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007ffff7fd0100",to="0x00007ffff7ff2674"}]
+1014^running
+*running,thread-id="all"
+(gdb) 
+~"Stopped due to shared library event (no libraries added or removed)\n"
+*stopped,reason="solib-event",thread-id="1",stopped-threads="all",core="0"
+1015^done,threads=[{id="1",target-id="process 5059",name="game",frame={level="0",addr="0x00007ffff7fd2fd1",func="??",args=[],from="/lib64/ld-linux-x86-64.so.2",arch="i386:x86-64"},state="stopped",core="0"}]
+(gdb) 
+1016^done,lines=[{pc="0x00005555555880b7",line="22"},{pc="0x00005555555880c4",line="24"},{pc="0x00005555555880d1",line="25"},{pc="0x00005555555880de",line="28"},{pc="0x00005555555880e5",line="28"},{pc="0x00005555555880e9",line="28"},{pc="0x00005555555880ed",line="29"},{pc="0x00005555555880f4",line="29"},{pc="0x00005555555880f9",line="29"},{pc="0x0000555555588103",line="29"},{pc="0x000055555558810a",line="29"},{pc="0x0000555555588113",line="30"},{pc="0x000055555558811a",line="30"},{pc="0x000055555558811f",line="30"},{pc="0x0000555555588128",line="31"},{pc="0x000055555558812f",line="31"},{pc="0x0000555555588135",line="34"},{pc="0x000055555558813c",line="34"},{pc="0x0000555555588141",line="34"},{pc="0x000055555558814b",line="34"},{pc="0x0000555555588152",line="34"},{pc="0x000055555558815b",line="35"},{pc="0x0000555555588162",line="35"},{pc="0x0000555555588167",line="35"},{pc="0x0000555555588174",line="36"},{pc="0x000055555558817b",line="36"},{pc="0x000055555558817f",line="41"},{pc="0x0000555555588186",line="41"},{pc="0x000055555558818a",line="41"},{pc="0x000055555558818e",line="42"},{pc="0x0000555555588195",line="42"},{pc="0x000055555558819a",line="42"},{pc="0x00005555555881a4",line="42"},{pc="0x00005555555881ab",line="42"},{pc="0x00005555555881b4",line="43"},{pc="0x00005555555881bb",line="43"},{pc="0x00005555555881c0",line="43"},{pc="0x00005555555881cd",line="44"},{pc="0x00005555555881d4",line="44"},{pc="0x00005555555881da",line="47"},{pc="0x00005555555881e1",line="47"},{pc="0x00005555555881e6",line="47"},{pc="0x00005555555881f0",line="47"},{pc="0x00005555555881f7",line="47"},{pc="0x0000555555588200",line="48"},{pc="0x0000555555588207",line="48"},{pc="0x000055555558820c",line="48"},{pc="0x0000555555588215",line="49"},{pc="0x000055555558821c",line="49"},{pc="0x0000555555588220",line="54"},{pc="0x0000555555588227",line="54"},{pc="0x000055555558822b",line="54"},{pc="0x000055555558822f",line="55"},{pc="0x0000555555588236",line="55"},{pc="0x000055555558823b",line="55"},{pc="0x0000555555588245",line="55"},{pc="0x000055555558824c",line="55"},{pc="0x0000555555588255",line="56"},{pc="0x000055555558825c",line="56"},{pc="0x0000555555588261",line="56"},{pc="0x000055555558826e",line="57"},{pc="0x0000555555588275",line="57"},{pc="0x000055555558827b",line="60"},{pc="0x0000555555588282",line="60"},{pc="0x0000555555588287",line="60"},{pc="0x0000555555588291",line="60"},{pc="0x0000555555588298",line="60"},{pc="0x00005555555882a1",line="61"},{pc="0x00005555555882a8",line="61"},{pc="0x00005555555882ad",line="61"},{pc="0x00005555555882b6",line="62"},{pc="0x00005555555882bd",line="62"},{pc="0x00005555555882c1",line="67"},{pc="0x00005555555882c8",line="67"},{pc="0x00005555555882cc",line="67"},{pc="0x00005555555882d0",line="68"},{pc="0x00005555555882d7",line="68"},{pc="0x00005555555882dc",line="68"},{pc="0x00005555555882e6",line="68"},{pc="0x00005555555882ed",line="68"},{pc="0x00005555555882f6",line="69"},{pc="0x00005555555882fd",line="69"},{pc="0x0000555555588302",line="69"},{pc="0x000055555558830b",line="78"},{pc="0x000055555558830d",line="70"},{pc="0x0000555555588314",line="70"},{pc="0x0000555555588318",line="78"},{pc="0x000055555558831a",line="73"},{pc="0x0000555555588321",line="73"},{pc="0x0000555555588326",line="73"},{pc="0x0000555555588330",line="73"},{pc="0x0000555555588337",line="73"},{pc="0x0000555555588340",line="74"},{pc="0x0000555555588347",line="74"},{pc="0x000055555558834c",line="74"},{pc="0x0000555555588359",line="78"},{pc="0x000055555558835b",line="75"},{pc="0x0000555555588362",line="75"},{pc="0x0000555555588366",line="78"},{pc="0x0000555555588369",line="81"},{pc="0x000055555558837f",line="81"},{pc="0x000055555558838e",line="82"},{pc="0x0000555555588416",line="83"},{pc="0x0000555555588436",line="84"},{pc="0x000055555558844f",line="82"},{pc="0x0000555555588481",line="84"},{pc="0x0000555555588490",line="86"},{pc="0x00005555555884a6",line="86"},{pc="0x00005555555884b5",line="88"},{pc="0x00005555555884ce",line="91"},{pc="0x00005555555884d4",line="91"},{pc="0x0000555555588512",line="93"},{pc="0x000055555558859a",line="94"},{pc="0x00005555555885cb",line="96"},{pc="0x00005555555885d1",line="96"},{pc="0x000055555558860f",line="98"},{pc="0x0000555555588697",line="99"},{pc="0x00005555555886c8",line="101"},{pc="0x00005555555886ce",line="101"},{pc="0x000055555558870c",line="103"},{pc="0x0000555555588794",line="104"},{pc="0x00005555555887c5",line="106"},{pc="0x00005555555887cb",line="106"},{pc="0x0000555555588809",line="108"},{pc="0x0000555555588891",line="109"},{pc="0x00005555555888bd",line="112"},{pc="0x0000555555588945",line="113"},{pc="0x000055555558894a",line="114"},{pc="0x0000555555588963",line="115"},{pc="0x000055555558898f",line="116"},{pc="0x0000555555588994",line="118"},{pc="0x0000555555588a1c",line="119"},{pc="0x0000555555588a48",line="121"},{pc="0x0000555555588ad0",line="122"},{pc="0x0000555555588afc",line="124"},{pc="0x0000555555588b84",line="125"},{pc="0x0000555555588bb0",line="127"},{pc="0x0000555555588c38",line="128"},{pc="0x0000555555588c64",line="129"},{pc="0x0000555555588c84",line="93"},{pc="0x0000555555588cbd",line="98"},{pc="0x0000555555588cf6",line="103"},{pc="0x0000555555588d2f",line="108"},{pc="0x0000555555588d68",line="112"},{pc="0x0000555555588da1",line="118"},{pc="0x0000555555588dda",line="121"},{pc="0x0000555555588e13",line="124"},{pc="0x0000555555588e4c",line="127"},{pc="0x0000555555588e7e",line="129"},{pc="0x0000555555588e8d",line="131"},{pc="0x0000555555588ea3",line="131"},{pc="0x0000555555588eb2",line="133"},{pc="0x0000555555588ecb",line="135"},{pc="0x0000555555588ed1",line="135"},{pc="0x0000555555588f0f",line="137"},{pc="0x0000555555588f97",line="138"},{pc="0x0000555555588fc8",line="140"},{pc="0x0000555555588fce",line="140"},{pc="0x000055555558900c",line="142"},{pc="0x0000555555589094",line="143"},{pc="0x00005555555890c5",line="145"},{pc="0x00005555555890cb",line="145"},{pc="0x0000555555589109",line="147"},{pc="0x0000555555589191",line="148"},{pc="0x00005555555891c2",line="150"},{pc="0x00005555555891c8",line="150"},{pc="0x0000555555589206",line="152"},{pc="0x000055555558928e",line="153"},{pc="0x00005555555892bf",line="155"},{pc="0x00005555555892c5",line="155"},{pc="0x0000555555589303",line="157"},{pc="0x000055555558938b",line="158"},{pc="0x00005555555893b7",line="160"},{pc="0x000055555558943f",line="161"},{pc="0x0000555555589444",line="162"},{pc="0x000055555558945d",line="163"},{pc="0x0000555555589489",line="164"},{pc="0x000055555558948e",line="166"},{pc="0x0000555555589516",line="167"},{pc="0x0000555555589542",line="169"},{pc="0x00005555555895ca",line="170"},{pc="0x00005555555895f6",line="172"},{pc="0x000055555558967e",line="173"},{pc="0x00005555555896aa",line="175"},{pc="0x0000555555589732",line="176"},{pc="0x000055555558975e",line="178"},{pc="0x00005555555897e6",line="179"},{pc="0x0000555555589812",line="180"},{pc="0x0000555555589832",line="137"},{pc="0x000055555558986b",line="142"},{pc="0x00005555555898a4",line="147"},{pc="0x00005555555898dd",line="152"},{pc="0x0000555555589916",line="157"},{pc="0x000055555558994f",line="160"},{pc="0x0000555555589988",line="166"},{pc="0x00005555555899c1",line="169"},{pc="0x00005555555899fa",line="172"},{pc="0x0000555555589a33",line="175"},{pc="0x0000555555589a6c",line="178"},{pc="0x0000555555589a9e",line="180"},{pc="0x0000555555589aad",line="183"},{pc="0x0000555555589abd",line="183"},{pc="0x0000555555589acc",line="184"},{pc="0x0000555555589ad1",line="185"},{pc="0x0000555555589aee",line="188"},{pc="0x0000555555589b0d",line="191"},{pc="0x0000555555589b95",line="192"},{pc="0x0000555555589b9a",line="193"},{pc="0x0000555555589bc6",line="194"},{pc="0x0000555555589bcb",line="197"},{pc="0x0000555555589c53",line="198"},{pc="0x0000555555589c58",line="199"},{pc="0x0000555555589c84",line="200"},{pc="0x0000555555589c89",line="204"},{pc="0x0000555555589c9c",line="205"},{pc="0x0000555555589d24",line="206"},{pc="0x0000555555589d35",line="209"},{pc="0x0000555555589dbd",line="210"},{pc="0x0000555555589dc9",line="212"},{pc="0x0000555555589dce",line="213"},{pc="0x0000555555589de7",line="214"},{pc="0x0000555555589dee",line="214"},{pc="0x0000555555589e0a",line="215"},{pc="0x0000555555589e23",line="216"},{pc="0x0000555555589e4f",line="217"},{pc="0x0000555555589e54",line="220"},{pc="0x0000555555589edc",line="221"},{pc="0x0000555555589ee1",line="222"},{pc="0x0000555555589efa",line="223"},{pc="0x0000555555589f1d",line="224"},{pc="0x0000555555589f36",line="225"},{pc="0x0000555555589f62",line="226"},{pc="0x0000555555589f67",line="229"},{pc="0x0000555555589fef",line="230"},{pc="0x0000555555589ff4",line="231"},{pc="0x000055555558a00d",line="232"},{pc="0x000055555558a030",line="233"},{pc="0x000055555558a049",line="234"},{pc="0x000055555558a075",line="235"},{pc="0x000055555558a07a",line="238"},{pc="0x000055555558a102",line="239"},{pc="0x000055555558a107",line="240"},{pc="0x000055555558a120",line="241"},{pc="0x000055555558a143",line="242"},{pc="0x000055555558a15c",line="243"},{pc="0x000055555558a188",line="244"},{pc="0x000055555558a18d",line="246"},{pc="0x000055555558a192",line="247"},{pc="0x000055555558a1b2",line="191"},{pc="0x000055555558a1eb",line="197"},{pc="0x000055555558a224",line="205"},{pc="0x000055555558a25d",line="209"},{pc="0x000055555558a296",line="220"},{pc="0x000055555558a2cf",line="229"},{pc="0x000055555558a308",line="238"},{pc="0x000055555558a33a",line="247"},{pc="0x000055555558a349",line="249"},{pc="0x000055555558a351",line="251"},{pc="0x000055555558a35b",line="252"},{pc="0x000055555558a360",line="253"},{pc="0x000055555558a3bb",line="256"},{pc="0x000055555558a3be",line="259"},{pc="0x000055555558a3c6",line="260"},{pc="0x000055555558a3d0",line="261"},{pc="0x000055555558a3da",line="262"},{pc="0x000055555558a3e4",line="264"},{pc="0x000055555558a3e9",line="265"},{pc="0x000055555558a3fa",line="268"},{pc="0x000055555558a407",line="269"},{pc="0x000055555558a411",line="269"},{pc="0x000055555558a431",line="270"},{pc="0x000055555558a43d",line="271"},{pc="0x000055555558a447",line="271"},{pc="0x000055555558a44c",line="272"},{pc="0x000055555558a456",line="275"},{pc="0x000055555558a465",line="278"},{pc="0x000055555558a479",line="278"},{pc="0x000055555558a48d",line="279"},{pc="0x000055555558a495",line="279"},{pc="0x000055555558a49e",line="280"},{pc="0x000055555558a4ba",line="282"},{pc="0x000055555558a4bf",line="284"},{pc="0x000055555558a4c9",line="285"},{pc="0x000055555558a4d3",line="286"},{pc="0x000055555558a4e2",line="287"},{pc="0x000055555558a4e5",line="290"},{pc="0x000055555558a4f1",line="290"},{pc="0x000055555558a500",line="291"},{pc="0x000055555558a504",line="293"},{pc="0x000055555558a509",line="293"},{pc="0x000055555558a50f",line="295"},{pc="0x000055555558a519",line="297"},{pc="0x000055555558a525",line="297"},{pc="0x000055555558a532",line="299"},{pc="0x000055555558a535",line="299"},{pc="0x000055555558a53c",line="300"},{pc="0x000055555558a541",line="302"},{pc="0x000055555558a544",line="302"},{pc="0x000055555558a54b",line="304"},{pc="0x000055555558a54e",line="304"},{pc="0x000055555558a553",line="305"},{pc="0x000055555558a557",line="306"},{pc="0x000055555558a55c",line="309"},{pc="0x000055555558a55f",line="309"},{pc="0x000055555558a566",line="312"},{pc="0x000055555558a579",line="313"},{pc="0x000055555558a57c",line="313"},{pc="0x000055555558a5a1",line="314"},{pc="0x000055555558a5a8",line="315"},{pc="0x000055555558a5b1",line="317"},{pc="0x000055555558a5b4",line="317"},{pc="0x000055555558a5d9",line="319"},{pc="0x000055555558a5e5",line="321"},{pc="0x000055555558a5e8",line="321"},{pc="0x000055555558a61c",line="323"},{pc="0x000055555558a625",line="326"},{pc="0x000055555558a628",line="326"},{pc="0x000055555558a64d",line="328"},{pc="0x000055555558a654",line="328"},{pc="0x000055555558a65b",line="329"},{pc="0x000055555558a662",line="329"},{pc="0x000055555558a66b",line="330"},{pc="0x000055555558a672",line="330"},{pc="0x000055555558a67b",line="331"},{pc="0x000055555558a682",line="331"},{pc="0x000055555558a68b",line="332"},{pc="0x000055555558a692",line="332"},{pc="0x000055555558a69b",line="335"},{pc="0x000055555558a6b4",line="297"},{pc="0x000055555558a6b9",line="338"},{pc="0x000055555558a6be",line="340"},{pc="0x000055555558a6c3",line="295"},{pc="0x000055555558a6c8",line="345"},{pc="0x000055555558a6d2",line="346"},{pc="0x000055555558a6e9",line="346"},{pc="0x000055555558a6fb",line="346"},{pc="0x000055555558a70a",line="0"},{pc="0x000055555558a733",line="13"},{pc="0x000055555558a759",line="346"},{pc="0x000055555558a75c",line="346"},{pc="0x000055555558a764",line="346"},{pc="0x000055555558a775",line="0"}]
+(gdb) 
+1017^done
+(gdb) 
+1018^done
+(gdb) 
+~"From                To                  Syms Read   Shared Object Library\n"
+~"0x00007ffff7fd0100  0x00007ffff7ff2674  Yes         /lib64/ld-linux-x86-64.so.2\n"
+1019^done
+(gdb) 
+^running
+*running,thread-id="all"
+(gdb) 
+=library-loaded,id="/lib/x86_64-linux-gnu/libqhull_r.so.7",target-name="/lib/x86_64-linux-gnu/libqhull_r.so.7",host-name="/lib/x86_64-linux-gnu/libqhull_r.so.7",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007ffff7d42e90",to="0x00007ffff7d7c4b0"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/libSDL2-2.0.so.0",target-name="/lib/x86_64-linux-gnu/libSDL2-2.0.so.0",host-name="/lib/x86_64-linux-gnu/libSDL2-2.0.so.0",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007ffff7c0a640",to="0x00007ffff7cde1f2"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/libGL.so.1",target-name="/lib/x86_64-linux-gnu/libGL.so.1",host-name="/lib/x86_64-linux-gnu/libGL.so.1",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007ffff7ba31c0",to="0x00007ffff7ba601d"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/libGLU.so.1",target-name="/lib/x86_64-linux-gnu/libGLU.so.1",host-name="/lib/x86_64-linux-gnu/libGLU.so.1",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007ffff7af3920",to="0x00007ffff7b45287"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/libglut.so.3",target-name="/lib/x86_64-linux-gnu/libglut.so.3",host-name="/lib/x86_64-linux-gnu/libglut.so.3",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007ffff78ba9c0",to="0x00007ffff78cc149"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/libstdc++.so.6",target-name="/lib/x86_64-linux-gnu/libstdc++.so.6",host-name="/lib/x86_64-linux-gnu/libstdc++.so.6",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007ffff7761160",to="0x00007ffff7849452"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/libm.so.6",target-name="/lib/x86_64-linux-gnu/libm.so.6",host-name="/lib/x86_64-linux-gnu/libm.so.6",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007ffff75813c0",to="0x00007ffff7627f18"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/libgcc_s.so.1",target-name="/lib/x86_64-linux-gnu/libgcc_s.so.1",host-name="/lib/x86_64-linux-gnu/libgcc_s.so.1",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007ffff755a5e0",to="0x00007ffff756b045"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/libc.so.6",target-name="/lib/x86_64-linux-gnu/libc.so.6",host-name="/lib/x86_64-linux-gnu/libc.so.6",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007ffff738a630",to="0x00007ffff74ff20d"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/libasound.so.2",target-name="/lib/x86_64-linux-gnu/libasound.so.2",host-name="/lib/x86_64-linux-gnu/libasound.so.2",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007ffff7295380",to="0x00007ffff7322146"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/libdl.so.2",target-name="/lib/x86_64-linux-gnu/libdl.so.2",host-name="/lib/x86_64-linux-gnu/libdl.so.2",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007ffff7265220",to="0x00007ffff7266179"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/libpulse.so.0",target-name="/lib/x86_64-linux-gnu/libpulse.so.0",host-name="/lib/x86_64-linux-gnu/libpulse.so.0",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007ffff721cf60",to="0x00007ffff724aab1"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/libX11.so.6",target-name="/lib/x86_64-linux-gnu/libX11.so.6",host-name="/lib/x86_64-linux-gnu/libX11.so.6",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007ffff70e90c0",to="0x00007ffff7172766"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/libXext.so.6",target-name="/lib/x86_64-linux-gnu/libXext.so.6",host-name="/lib/x86_64-linux-gnu/libXext.so.6",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007ffff70bf5e0",to="0x00007ffff70c984e"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/libXcursor.so.1",target-name="/lib/x86_64-linux-gnu/libXcursor.so.1",host-name="/lib/x86_64-linux-gnu/libXcursor.so.1",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007ffff70b1660",to="0x00007ffff70b6288"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/libXinerama.so.1",target-name="/lib/x86_64-linux-gnu/libXinerama.so.1",host-name="/lib/x86_64-linux-gnu/libXinerama.so.1",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007ffff70aa0f0",to="0x00007ffff70aaa31"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/libXi.so.6",target-name="/lib/x86_64-linux-gnu/libXi.so.6",host-name="/lib/x86_64-linux-gnu/libXi.so.6",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007ffff7099460",to="0x00007ffff70a3d1b"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/libXrandr.so.2",target-name="/lib/x86_64-linux-gnu/libXrandr.so.2",host-name="/lib/x86_64-linux-gnu/libXrandr.so.2",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007ffff708c360",to="0x00007ffff70926b9"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/libXss.so.1",target-name="/lib/x86_64-linux-gnu/libXss.so.1",host-name="/lib/x86_64-linux-gnu/libXss.so.1",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007ffff7084140",to="0x00007ffff7084d5d"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/libXxf86vm.so.1",target-name="/lib/x86_64-linux-gnu/libXxf86vm.so.1",host-name="/lib/x86_64-linux-gnu/libXxf86vm.so.1",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007ffff707d240",to="0x00007ffff707f9f9"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/libwayland-egl.so.1",target-name="/lib/x86_64-linux-gnu/libwayland-egl.so.1",host-name="/lib/x86_64-linux-gnu/libwayland-egl.so.1",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007ffff7078080",to="0x00007ffff7078219"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/libwayland-client.so.0",target-name="/lib/x86_64-linux-gnu/libwayland-client.so.0",host-name="/lib/x86_64-linux-gnu/libwayland-client.so.0",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007ffff706b5c0",to="0x00007ffff7070345"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/libwayland-cursor.so.0",target-name="/lib/x86_64-linux-gnu/libwayland-cursor.so.0",host-name="/lib/x86_64-linux-gnu/libwayland-cursor.so.0",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007ffff705d460",to="0x00007ffff705eff7"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/libxkbcommon.so.0",target-name="/lib/x86_64-linux-gnu/libxkbcommon.so.0",host-name="/lib/x86_64-linux-gnu/libxkbcommon.so.0",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007ffff701d560",to="0x00007ffff7038703"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/libpthread.so.0",target-name="/lib/x86_64-linux-gnu/libpthread.so.0",host-name="/lib/x86_64-linux-gnu/libpthread.so.0",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007ffff6ffbae0",to="0x00007ffff700b4d5"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/libGLdispatch.so.0",target-name="/lib/x86_64-linux-gnu/libGLdispatch.so.0",host-name="/lib/x86_64-linux-gnu/libGLdispatch.so.0",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007ffff6f7c240",to="0x00007ffff6f7e4eb"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/libGLX.so.0",target-name="/lib/x86_64-linux-gnu/libGLX.so.0",host-name="/lib/x86_64-linux-gnu/libGLX.so.0",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007ffff6f0b700",to="0x00007ffff6f2548c"}]
+=library-loaded,id="/usr/lib/x86_64-linux-gnu/pulseaudio/libpulsecommon-13.99.so",target-name="/usr/lib/x86_64-linux-gnu/pulseaudio/libpulsecommon-13.99.so",host-name="/usr/lib/x86_64-linux-gnu/pulseaudio/libpulsecommon-13.99.so",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007ffff6e993e0",to="0x00007ffff6ede002"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/libdbus-1.so.3",target-name="/lib/x86_64-linux-gnu/libdbus-1.so.3",host-name="/lib/x86_64-linux-gnu/libdbus-1.so.3",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007ffff6e40eb0",to="0x00007ffff6e6d915"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/libxcb.so.1",target-name="/lib/x86_64-linux-gnu/libxcb.so.1",host-name="/lib/x86_64-linux-gnu/libxcb.so.1",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007ffff6e14620",to="0x00007ffff6e27699"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/libXrender.so.1",target-name="/lib/x86_64-linux-gnu/libXrender.so.1",host-name="/lib/x86_64-linux-gnu/libXrender.so.1",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007ffff6c00a60",to="0x00007ffff6c06ab5"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/libXfixes.so.3",target-name="/lib/x86_64-linux-gnu/libXfixes.so.3",host-name="/lib/x86_64-linux-gnu/libXfixes.so.3",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007ffff6bf9300",to="0x00007ffff6bfb6ea"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/libffi.so.7",target-name="/lib/x86_64-linux-gnu/libffi.so.7",host-name="/lib/x86_64-linux-gnu/libffi.so.7",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007ffff6bed230",to="0x00007ffff6bf2a46"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/libsystemd.so.0",target-name="/lib/x86_64-linux-gnu/libsystemd.so.0",host-name="/lib/x86_64-linux-gnu/libsystemd.so.0",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007ffff6b4dbc0",to="0x00007ffff6bc0780"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/libwrap.so.0",target-name="/lib/x86_64-linux-gnu/libwrap.so.0",host-name="/lib/x86_64-linux-gnu/libwrap.so.0",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007ffff6b31b20",to="0x00007ffff6b3588c"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/libsndfile.so.1",target-name="/lib/x86_64-linux-gnu/libsndfile.so.1",host-name="/lib/x86_64-linux-gnu/libsndfile.so.1",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007ffff6ab7fa0",to="0x00007ffff6b09f05"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/libasyncns.so.0",target-name="/lib/x86_64-linux-gnu/libasyncns.so.0",host-name="/lib/x86_64-linux-gnu/libasyncns.so.0",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007ffff68ab1d0",to="0x00007ffff68ad848"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/libapparmor.so.1",target-name="/lib/x86_64-linux-gnu/libapparmor.so.1",host-name="/lib/x86_64-linux-gnu/libapparmor.so.1",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007ffff68988c0",to="0x00007ffff68a0380"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/librt.so.1",target-name="/lib/x86_64-linux-gnu/librt.so.1",host-name="/lib/x86_64-linux-gnu/librt.so.1",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007ffff688d720",to="0x00007ffff6890d70"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/libXau.so.6",target-name="/lib/x86_64-linux-gnu/libXau.so.6",host-name="/lib/x86_64-linux-gnu/libXau.so.6",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007ffff6885360",to="0x00007ffff6886052"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/libXdmcp.so.6",target-name="/lib/x86_64-linux-gnu/libXdmcp.so.6",host-name="/lib/x86_64-linux-gnu/libXdmcp.so.6",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007ffff687c1a0",to="0x00007ffff687da03"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/liblzma.so.5",target-name="/lib/x86_64-linux-gnu/liblzma.so.5",host-name="/lib/x86_64-linux-gnu/liblzma.so.5",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007ffff68543c0",to="0x00007ffff686b3a6"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/liblz4.so.1",target-name="/lib/x86_64-linux-gnu/liblz4.so.1",host-name="/lib/x86_64-linux-gnu/liblz4.so.1",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007ffff6832120",to="0x00007ffff684b8fb"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/libgcrypt.so.20",target-name="/lib/x86_64-linux-gnu/libgcrypt.so.20",host-name="/lib/x86_64-linux-gnu/libgcrypt.so.20",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007ffff671e580",to="0x00007ffff67eb9dc"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/libnsl.so.1",target-name="/lib/x86_64-linux-gnu/libnsl.so.1",host-name="/lib/x86_64-linux-gnu/libnsl.so.1",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007ffff66fad20",to="0x00007ffff6709711"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/libFLAC.so.8",target-name="/lib/x86_64-linux-gnu/libFLAC.so.8",host-name="/lib/x86_64-linux-gnu/libFLAC.so.8",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007ffff66bf800",to="0x00007ffff66e7c33"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/libogg.so.0",target-name="/lib/x86_64-linux-gnu/libogg.so.0",host-name="/lib/x86_64-linux-gnu/libogg.so.0",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007ffff66aa480",to="0x00007ffff66ae539"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/libvorbis.so.0",target-name="/lib/x86_64-linux-gnu/libvorbis.so.0",host-name="/lib/x86_64-linux-gnu/libvorbis.so.0",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007ffff667d480",to="0x00007ffff6693c4d"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/libvorbisenc.so.2",target-name="/lib/x86_64-linux-gnu/libvorbisenc.so.2",host-name="/lib/x86_64-linux-gnu/libvorbisenc.so.2",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007ffff65e30c0",to="0x00007ffff65e577e"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/libresolv.so.2",target-name="/lib/x86_64-linux-gnu/libresolv.so.2",host-name="/lib/x86_64-linux-gnu/libresolv.so.2",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007ffff65b7720",to="0x00007ffff65c611c"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/libbsd.so.0",target-name="/lib/x86_64-linux-gnu/libbsd.so.0",host-name="/lib/x86_64-linux-gnu/libbsd.so.0",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007ffff659de40",to="0x00007ffff65abe69"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/libgpg-error.so.0",target-name="/lib/x86_64-linux-gnu/libgpg-error.so.0",host-name="/lib/x86_64-linux-gnu/libgpg-error.so.0",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007ffff6578c60",to="0x00007ffff658aa92"}]
+~"[Thread debugging using libthread_db enabled]\n"
+~"Using host libthread_db library \"/lib/x86_64-linux-gnu/libthread_db.so.1\".\n"
+=breakpoint-modified,bkpt={number="1",type="breakpoint",disp="keep",enabled="y",addr="0x000055555555a17e",func="main(int, char**)",file="game.cpp",fullname="/home/vmware/software_g/c612301099/game/game.cpp",line="301",thread-groups=["i1"],times="1",original-location="main"}
+~"\n"
+~"Breakpoint 1, main (argc=21845, argv=0x7fffffffda90) at game.cpp:301\n"
+~"301\tint main(int argc, char** argv) {\n"
+*stopped,reason="breakpoint-hit",disp="keep",bkptno="1",frame={addr="0x000055555555a17e",func="main",args=[{name="argc",value="21845"},{name="argv",value="0x7fffffffda90"}],file="game.cpp",fullname="/home/vmware/software_g/c612301099/game/game.cpp",line="301",arch="i386:x86-64"},thread-id="1",stopped-threads="all",core="0"
+1020^done,threads=[{id="1",target-id="Thread 0x7ffff656d800 (LWP 5059)",name="game",frame={level="0",addr="0x000055555555a17e",func="main",args=[{name="argc",value="21845"},{name="argv",value="0x7fffffffda90"}],file="game.cpp",fullname="/home/vmware/software_g/c612301099/game/game.cpp",line="301",arch="i386:x86-64"},state="stopped",core="0"}],current-thread-id="1"
+(gdb) 
+~"From                To                  Syms Read   Shared Object Library\n"
+~"0x00007ffff7fd0100  0x00007ffff7ff2674  Yes         /lib64/ld-linux-x86-64.so.2\n"
+~"0x00007ffff7d42e90  0x00007ffff7d7c4b0  Yes         /lib/x86_64-linux-gnu/libqhull_r.so.7\n"
+~"0x00007ffff7c0a640  0x00007ffff7cde1f2  Yes         /lib/x86_64-linux-gnu/libSDL2-2.0.so.0\n"
+~"0x00007ffff7ba31c0  0x00007ffff7ba601d  Yes         /lib/x86_64-linux-gnu/libGL.so.1\n"
+~"0x00007ffff7af3920  0x00007ffff7b45287  Yes         /lib/x86_64-linux-gnu/libGLU.so.1\n"
+~"0x00007ffff78ba9c0  0x00007ffff78cc149  Yes         /lib/x86_64-linux-gnu/libglut.so.3\n"
+~"0x00007ffff7761160  0x00007ffff7849452  Yes         /lib/x86_64-linux-gnu/libstdc++.so.6\n"
+~"0x00007ffff75813c0  0x00007ffff7627f18  Yes         /lib/x86_64-linux-gnu/libm.so.6\n"
+~"0x00007ffff755a5e0  0x00007ffff756b045  Yes         /lib/x86_64-linux-gnu/libgcc_s.so.1\n"
+~"0x00007ffff738a630  0x00007ffff74ff20d  Yes         /lib/x86_64-linux-gnu/libc.so.6\n"
+~"0x00007ffff7295380  0x00007ffff7322146  Yes         /lib/x86_64-linux-gnu/libasound.so.2\n"
+~"0x00007ffff7265220  0x00007ffff7266179  Yes         /lib/x86_64-linux-gnu/libdl.so.2\n"
+~"0x00007ffff721cf60  0x00007ffff724aab1  Yes         /lib/x86_64-linux-gnu/libpulse.so.0\n"
+~"0x00007ffff70e90c0  0x00007ffff7172766  Yes         /lib/x86_64-linux-gnu/libX11.so.6\n"
+~"0x00007ffff70bf5e0  0x00007ffff70c984e  Yes         /lib/x86_64-linux-gnu/libXext.so.6\n"
+~"0x00007ffff70b1660  0x00007ffff70b6288  Yes         /lib/x86_64-linux-gnu/libXcursor.so.1\n"
+~"0x00007ffff70aa0f0  0x00007ffff70aaa31  Yes         /lib/x86_64-linux-gnu/libXinerama.so.1\n"
+~"0x00007ffff7099460  0x00007ffff70a3d1b  Yes         /lib/x86_64-linux-gnu/libXi.so.6\n"
+~"0x00007ffff708c360  0x00007ffff70926b9  Yes         /lib/x86_64-linux-gnu/libXrandr.so.2\n"
+~"0x00007ffff7084140  0x00007ffff7084d5d  Yes         /lib/x86_64-linux-gnu/libXss.so.1\n"
+~"0x00007ffff707d240  0x00007ffff707f9f9  Yes         /lib/x86_64-linux-gnu/libXxf86vm.so.1\n"
+~"0x00007ffff7078080  0x00007ffff7078219  Yes         /lib/x86_64-linux-gnu/libwayland-egl.so.1\n"
+~"0x00007ffff706b5c0  0x00007ffff7070345  Yes         /lib/x86_64-linux-gnu/libwayland-client.so.0\n"
+~"0x00007ffff705d460  0x00007ffff705eff7  Yes         /lib/x86_64-linux-gnu/libwayland-cursor.so.0\n"
+~"0x00007ffff701d560  0x00007ffff7038703  Yes         /lib/x86_64-linux-gnu/libxkbcommon.so.0\n"
+~"0x00007ffff6ffbae0  0x00007ffff700b4d5  Yes         /lib/x86_64-linux-gnu/libpthread.so.0\n"
+~"0x00007ffff6f7c240  0x00007ffff6f7e4eb  Yes         /lib/x86_64-linux-gnu/libGLdispatch.so.0\n"
+~"0x00007ffff6f0b700  0x00007ffff6f2548c  Yes         /lib/x86_64-linux-gnu/libGLX.so.0\n"
+~"0x00007ffff6e993e0  0x00007ffff6ede002  Yes         /usr/lib/x86_64-linux-gnu/pulseaudio/libpulsecommon-13.99.so\n"
+~"0x00007ffff6e40eb0  0x00007ffff6e6d915  Yes         /lib/x86_64-linux-gnu/libdbus-1.so.3\n"
+~"0x00007ffff6e14620  0x00007ffff6e27699  Yes         /lib/x86_64-linux-gnu/libxcb.so.1\n"
+~"0x00007ffff6c00a60  0x00007ffff6c06ab5  Yes         /lib/x86_64-linux-gnu/libXrender.so.1\n"
+~"0x00007ffff6bf9300  0x00007ffff6bfb6ea  Yes         /lib/x86_64-linux-gnu/libXfixes.so.3\n"
+~"0x00007ffff6bed230  0x00007ffff6bf2a46  Yes         /lib/x86_64-linux-gnu/libffi.so.7\n"
+~"0x00007ffff6b4dbc0  0x00007ffff6bc0780  Yes         /lib/x86_64-linux-gnu/libsystemd.so.0\n"
+~"0x00007ffff6b31b20  0x00007ffff6b3588c  Yes         /lib/x86_64-linux-gnu/libwrap.so.0\n"
+~"0x00007ffff6ab7fa0  0x00007ffff6b09f05  Yes         /lib/x86_64-linux-gnu/libsndfile.so.1\n"
+~"0x00007ffff68ab1d0  0x00007ffff68ad848  Yes         /lib/x86_64-linux-gnu/libasyncns.so.0\n"
+~"0x00007ffff68988c0  0x00007ffff68a0380  Yes         /lib/x86_64-linux-gnu/libapparmor.so.1\n"
+~"0x00007ffff688d720  0x00007ffff6890d70  Yes         /lib/x86_64-linux-gnu/librt.so.1\n"
+~"0x00007ffff6885360  0x00007ffff6886052  Yes         /lib/x86_64-linux-gnu/libXau.so.6\n"
+~"0x00007ffff687c1a0  0x00007ffff687da03  Yes         /lib/x86_64-linux-gnu/libXdmcp.so.6\n"
+~"0x00007ffff68543c0  0x00007ffff686b3a6  Yes         /lib/x86_64-linux-gnu/liblzma.so.5\n"
+~"0x00007ffff6832120  0x00007ffff684b8fb  Yes         /lib/x86_64-linux-gnu/liblz4.so.1\n"
+~"0x00007ffff671e580  0x00007ffff67eb9dc  Yes         /lib/x86_64-linux-gnu/libgcrypt.so.20\n"
+~"0x00007ffff66fad20  0x00007ffff6709711  Yes         /lib/x86_64-linux-gnu/libnsl.so.1\n"
+~"0x00007ffff66bf800  0x00007ffff66e7c33  Yes         /lib/x86_64-linux-gnu/libFLAC.so.8\n"
+~"0x00007ffff66aa480  0x00007ffff66ae539  Yes         /lib/x86_64-linux-gnu/libogg.so.0\n"
+~"0x00007ffff667d480  0x00007ffff6693c4d  Yes         /lib/x86_64-linux-gnu/libvorbis.so.0\n"
+~"0x00007ffff65e30c0  0x00007ffff65e577e  Yes         /lib/x86_64-linux-gnu/libvorbisenc.so.2\n"
+~"0x00007ffff65b7720  0x00007ffff65c611c  Yes         /lib/x86_64-linux-gnu/libresolv.so.2\n"
+~"0x00007ffff659de40  0x00007ffff65abe69  Yes         /lib/x86_64-linux-gnu/libbsd.so.0\n"
+~"0x00007ffff6578c60  0x00007ffff658aa92  Yes         /lib/x86_64-linux-gnu/libgpg-error.so.0\n"
+1021^done
+(gdb) 
+1022^done,stack=[frame={level="0",addr="0x000055555555a17e",func="main",file="game.cpp",fullname="/home/vmware/software_g/c612301099/game/game.cpp",line="301",arch="i386:x86-64"}]
+(gdb) 
+1023^done
+(gdb) 
+1024^done,features=["frozen-varobjs","pending-breakpoints","thread-info","data-read-memory-bytes","breakpoint-notifications","ada-task-info","language-option","info-gdb-mi-command","undefined-command-error-code","exec-run-start-option","data-disassemble-a-option","python"]
+(gdb) 
+1025^done,stack-args=[frame={level="0",args=[name="argc",name="argv"]}]
+(gdb) 
+1026^done,name="var1",numchild="0",value="21845",type="int",thread-id="1",has_more="0"
+(gdb) 
+1027^done,ndeleted="1"
+(gdb) 
+1028^done,name="var2",numchild="1",value="0x7fffffffda90",type="char **",thread-id="1",has_more="0"
+(gdb) 
+1029^done,ndeleted="1"
+(gdb) 
+1030^done,stack-args=[frame={level="0",args=[name="argc",name="argv"]}]
+(gdb) 
+1031^done,name="var3",numchild="0",value="21845",type="int",thread-id="1",has_more="0"
+(gdb) 
+1032^done,ndeleted="1"
+(gdb) 
+1033^done,name="var4",numchild="1",value="0x7fffffffda90",type="char **",thread-id="1",has_more="0"
+(gdb) 
+1034^done,ndeleted="1"
+(gdb) 
+1035^done,name="var5",numchild="0",value="{...}",type="std::vector<Objdata, std::allocator<Objdata> >",displayhint="array",dynamic="1",has_more="0"
+(gdb) 
+1036^done,name="var6",numchild="1",value="{...}",type="Objdata",has_more="0"
+(gdb) 
+1037^done,name="var7",numchild="0",value="0",type="GLuint",has_more="0"
+(gdb) 
+1038^done,name="var8",numchild="0",value="0",type="GLuint",has_more="0"
+(gdb) 
+1039^done,name="var9",numchild="0",value="{...}",type="std::vector<Objdata, std::allocator<Objdata> >",displayhint="array",dynamic="1",has_more="0"
+(gdb) 
+1040^done,name="var10",numchild="1",value="{...}",type="GameInfo",has_more="0"
+(gdb) 
+1041^done,variables=[{name="argc",arg="1"},{name="argv",arg="1"},{name="running"}]
+(gdb) 
+1042^done,name="var11",numchild="0",value="21845",type="int",thread-id="1",has_more="0"
+(gdb) 
+1043^done,name="var12",numchild="1",value="0x7fffffffda90",type="char **",thread-id="1",has_more="0"
+(gdb) 
+1044^done,name="var13",numchild="0",value="false",type="bool",thread-id="1",has_more="0"
+(gdb) 
+^running
+*running,thread-id="all"
+(gdb) 
+=library-loaded,id="/lib/x86_64-linux-gnu/libGLX_mesa.so.0",target-name="/lib/x86_64-linux-gnu/libGLX_mesa.so.0",host-name="/lib/x86_64-linux-gnu/libGLX_mesa.so.0",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007ffff562ed00",to="0x00007ffff5670632"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/libglapi.so.0",target-name="/lib/x86_64-linux-gnu/libglapi.so.0",host-name="/lib/x86_64-linux-gnu/libglapi.so.0",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007ffff55511a0",to="0x00007ffff555e8b0"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/libdrm.so.2",target-name="/lib/x86_64-linux-gnu/libdrm.so.2",host-name="/lib/x86_64-linux-gnu/libdrm.so.2",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007ffff5604700",to="0x00007ffff560dc49"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/libxcb-glx.so.0",target-name="/lib/x86_64-linux-gnu/libxcb-glx.so.0",host-name="/lib/x86_64-linux-gnu/libxcb-glx.so.0",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007ffff55330a0",to="0x00007ffff553bb29"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/libX11-xcb.so.1",target-name="/lib/x86_64-linux-gnu/libX11-xcb.so.1",host-name="/lib/x86_64-linux-gnu/libX11-xcb.so.1",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007ffff55fc040",to="0x00007ffff55fc11f"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/libxcb-dri2.so.0",target-name="/lib/x86_64-linux-gnu/libxcb-dri2.so.0",host-name="/lib/x86_64-linux-gnu/libxcb-dri2.so.0",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007ffff55f60a0",to="0x00007ffff55f7309"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/libxcb-shm.so.0",target-name="/lib/x86_64-linux-gnu/libxcb-shm.so.0",host-name="/lib/x86_64-linux-gnu/libxcb-shm.so.0",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007ffff55240e0",to="0x00007ffff5524c37"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/libexpat.so.1",target-name="/lib/x86_64-linux-gnu/libexpat.so.1",host-name="/lib/x86_64-linux-gnu/libexpat.so.1",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007ffff54f9230",to="0x00007ffff55144b7"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/libxcb-dri3.so.0",target-name="/lib/x86_64-linux-gnu/libxcb-dri3.so.0",host-name="/lib/x86_64-linux-gnu/libxcb-dri3.so.0",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007ffff54f10e0",to="0x00007ffff54f1fd7"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/libxcb-present.so.0",target-name="/lib/x86_64-linux-gnu/libxcb-present.so.0",host-name="/lib/x86_64-linux-gnu/libxcb-present.so.0",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007ffff54eb0a0",to="0x00007ffff54eb97a"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/libxcb-sync.so.1",target-name="/lib/x86_64-linux-gnu/libxcb-sync.so.1",host-name="/lib/x86_64-linux-gnu/libxcb-sync.so.1",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007ffff54e3100",to="0x00007ffff54e5416"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/libxshmfence.so.1",target-name="/lib/x86_64-linux-gnu/libxshmfence.so.1",host-name="/lib/x86_64-linux-gnu/libxshmfence.so.1",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007ffff52de960",to="0x00007ffff52dec2c"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/libxcb-xfixes.so.0",target-name="/lib/x86_64-linux-gnu/libxcb-xfixes.so.0",host-name="/lib/x86_64-linux-gnu/libxcb-xfixes.so.0",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007ffff52d70a0",to="0x00007ffff52d98de"}]
+=library-loaded,id="/usr/lib/x86_64-linux-gnu/dri/vmwgfx_dri.so",target-name="/usr/lib/x86_64-linux-gnu/dri/vmwgfx_dri.so",host-name="/usr/lib/x86_64-linux-gnu/dri/vmwgfx_dri.so",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007ffff3ae1440",to="0x00007ffff4a81e22"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/libLLVM-12.so.1",target-name="/lib/x86_64-linux-gnu/libLLVM-12.so.1",host-name="/lib/x86_64-linux-gnu/libLLVM-12.so.1",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007fffeec01e30",to="0x00007ffff155a633"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/libz.so.1",target-name="/lib/x86_64-linux-gnu/libz.so.1",host-name="/lib/x86_64-linux-gnu/libz.so.1",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007fffee1f1280",to="0x00007fffee201e2b"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/libzstd.so.1",target-name="/lib/x86_64-linux-gnu/libzstd.so.1",host-name="/lib/x86_64-linux-gnu/libzstd.so.1",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007fffee14a240",to="0x00007fffee1dbd0a"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/libsensors.so.5",target-name="/lib/x86_64-linux-gnu/libsensors.so.5",host-name="/lib/x86_64-linux-gnu/libsensors.so.5",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007fffee138580",to="0x00007fffee13ef68"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/libdrm_radeon.so.1",target-name="/lib/x86_64-linux-gnu/libdrm_radeon.so.1",host-name="/lib/x86_64-linux-gnu/libdrm_radeon.so.1",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007fffee1282a0",to="0x00007fffee12eb5d"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/libelf.so.1",target-name="/lib/x86_64-linux-gnu/libelf.so.1",host-name="/lib/x86_64-linux-gnu/libelf.so.1",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007fffee10d580",to="0x00007fffee11e105"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/libdrm_amdgpu.so.1",target-name="/lib/x86_64-linux-gnu/libdrm_amdgpu.so.1",host-name="/lib/x86_64-linux-gnu/libdrm_amdgpu.so.1",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007fffee101740",to="0x00007fffee105e61"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/libdrm_nouveau.so.2",target-name="/lib/x86_64-linux-gnu/libdrm_nouveau.so.2",host-name="/lib/x86_64-linux-gnu/libdrm_nouveau.so.2",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007fffee0f53a0",to="0x00007fffee0f90ae"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/libvulkan.so.1",target-name="/lib/x86_64-linux-gnu/libvulkan.so.1",host-name="/lib/x86_64-linux-gnu/libvulkan.so.1",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007fffee0ac6c0",to="0x00007fffee0ddf16"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/libedit.so.2",target-name="/lib/x86_64-linux-gnu/libedit.so.2",host-name="/lib/x86_64-linux-gnu/libedit.so.2",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007fffee06dfb0",to="0x00007fffee087f24"}]
+=library-loaded,id="/lib/x86_64-linux-gnu/libtinfo.so.6",target-name="/lib/x86_64-linux-gnu/libtinfo.so.6",host-name="/lib/x86_64-linux-gnu/libtinfo.so.6",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007fffee0436a0",to="0x00007fffee05117c"}]
+=breakpoint-modified,bkpt={number="2",type="breakpoint",disp="keep",enabled="y",addr="0x0000555555589c9c",func="draw_3d_character()",file="window.cpp",fullname="/home/vmware/software_g/c612301099/game/window.cpp",line="205",thread-groups=["i1"],times="1",original-location="window.cpp:205"}
+~"\n"
+~"Breakpoint 2, draw_3d_character () at window.cpp:205\n"
+~"205\t        obj_s = loadObjData(\"../select/AK-47_rightArm_sub.txt\");  \n"
+*stopped,reason="breakpoint-hit",disp="keep",bkptno="2",frame={addr="0x0000555555589c9c",func="draw_3d_character",args=[],file="window.cpp",fullname="/home/vmware/software_g/c612301099/game/window.cpp",line="205",arch="i386:x86-64"},thread-id="1",stopped-threads="all",core="0"
+~"From                To                  Syms Read   Shared Object Library\n"
+~"0x00007ffff7fd0100  0x00007ffff7ff2674  Yes         /lib64/ld-linux-x86-64.so.2\n"
+~"0x00007ffff7d42e90  0x00007ffff7d7c4b0  Yes         /lib/x86_64-linux-gnu/libqhull_r.so.7\n"
+~"0x00007ffff7c0a640  0x00007ffff7cde1f2  Yes         /lib/x86_64-linux-gnu/libSDL2-2.0.so.0\n"
+~"0x00007ffff7ba31c0  0x00007ffff7ba601d  Yes         /lib/x86_64-linux-gnu/libGL.so.1\n"
+~"0x00007ffff7af3920  0x00007ffff7b45287  Yes         /lib/x86_64-linux-gnu/libGLU.so.1\n"
+~"0x00007ffff78ba9c0  0x00007ffff78cc149  Yes         /lib/x86_64-linux-gnu/libglut.so.3\n"
+~"0x00007ffff7761160  0x00007ffff7849452  Yes         /lib/x86_64-linux-gnu/libstdc++.so.6\n"
+~"0x00007ffff75813c0  0x00007ffff7627f18  Yes         /lib/x86_64-linux-gnu/libm.so.6\n"
+~"0x00007ffff755a5e0  0x00007ffff756b045  Yes         /lib/x86_64-linux-gnu/libgcc_s.so.1\n"
+~"0x00007ffff738a630  0x00007ffff74ff20d  Yes         /lib/x86_64-linux-gnu/libc.so.6\n"
+~"0x00007ffff7295380  0x00007ffff7322146  Yes         /lib/x86_64-linux-gnu/libasound.so.2\n"
+~"0x00007ffff7265220  0x00007ffff7266179  Yes         /lib/x86_64-linux-gnu/libdl.so.2\n"
+~"0x00007ffff721cf60  0x00007ffff724aab1  Yes         /lib/x86_64-linux-gnu/libpulse.so.0\n"
+~"0x00007ffff70e90c0  0x00007ffff7172766  Yes         /lib/x86_64-linux-gnu/libX11.so.6\n"
+~"0x00007ffff70bf5e0  0x00007ffff70c984e  Yes         /lib/x86_64-linux-gnu/libXext.so.6\n"
+~"0x00007ffff70b1660  0x00007ffff70b6288  Yes         /lib/x86_64-linux-gnu/libXcursor.so.1\n"
+~"0x00007ffff70aa0f0  0x00007ffff70aaa31  Yes         /lib/x86_64-linux-gnu/libXinerama.so.1\n"
+~"0x00007ffff7099460  0x00007ffff70a3d1b  Yes         /lib/x86_64-linux-gnu/libXi.so.6\n"
+~"0x00007ffff708c360  0x00007ffff70926b9  Yes         /lib/x86_64-linux-gnu/libXrandr.so.2\n"
+~"0x00007ffff7084140  0x00007ffff7084d5d  Yes         /lib/x86_64-linux-gnu/libXss.so.1\n"
+~"0x00007ffff707d240  0x00007ffff707f9f9  Yes         /lib/x86_64-linux-gnu/libXxf86vm.so.1\n"
+~"0x00007ffff7078080  0x00007ffff7078219  Yes         /lib/x86_64-linux-gnu/libwayland-egl.so.1\n"
+~"0x00007ffff706b5c0  0x00007ffff7070345  Yes         /lib/x86_64-linux-gnu/libwayland-client.so.0\n"
+~"0x00007ffff705d460  0x00007ffff705eff7  Yes         /lib/x86_64-linux-gnu/libwayland-cursor.so.0\n"
+~"0x00007ffff701d560  0x00007ffff7038703  Yes         /lib/x86_64-linux-gnu/libxkbcommon.so.0\n"
+~"0x00007ffff6ffbae0  0x00007ffff700b4d5  Yes         /lib/x86_64-linux-gnu/libpthread.so.0\n"
+~"0x00007ffff6f7c240  0x00007ffff6f7e4eb  Yes         /lib/x86_64-linux-gnu/libGLdispatch.so.0\n"
+~"0x00007ffff6f0b700  0x00007ffff6f2548c  Yes         /lib/x86_64-linux-gnu/libGLX.so.0\n"
+~"0x00007ffff6e993e0  0x00007ffff6ede002  Yes         /usr/lib/x86_64-linux-gnu/pulseaudio/libpulsecommon-13.99.so\n"
+~"0x00007ffff6e40eb0  0x00007ffff6e6d915  Yes         /lib/x86_64-linux-gnu/libdbus-1.so.3\n"
+~"0x00007ffff6e14620  0x00007ffff6e27699  Yes         /lib/x86_64-linux-gnu/libxcb.so.1\n"
+~"0x00007ffff6c00a60  0x00007ffff6c06ab5  Yes         /lib/x86_64-linux-gnu/libXrender.so.1\n"
+~"0x00007ffff6bf9300  0x00007ffff6bfb6ea  Yes         /lib/x86_64-linux-gnu/libXfixes.so.3\n"
+~"0x00007ffff6bed230  0x00007ffff6bf2a46  Yes         /lib/x86_64-linux-gnu/libffi.so.7\n"
+~"0x00007ffff6b4dbc0  0x00007ffff6bc0780  Yes         /lib/x86_64-linux-gnu/libsystemd.so.0\n"
+~"0x00007ffff6b31b20  0x00007ffff6b3588c  Yes         /lib/x86_64-linux-gnu/libwrap.so.0\n"
+~"0x00007ffff6ab7fa0  0x00007ffff6b09f05  Yes         /lib/x86_64-linux-gnu/libsndfile.so.1\n"
+~"0x00007ffff68ab1d0  0x00007ffff68ad848  Yes         /lib/x86_64-linux-gnu/libasyncns.so.0\n"
+~"0x00007ffff68988c0  0x00007ffff68a0380  Yes         /lib/x86_64-linux-gnu/libapparmor.so.1\n"
+~"0x00007ffff688d720  0x00007ffff6890d70  Yes         /lib/x86_64-linux-gnu/librt.so.1\n"
+~"0x00007ffff6885360  0x00007ffff6886052  Yes         /lib/x86_64-linux-gnu/libXau.so.6\n"
+~"0x00007ffff687c1a0  0x00007ffff687da03  Yes         /lib/x86_64-linux-gnu/libXdmcp.so.6\n"
+~"0x00007ffff68543c0  0x00007ffff686b3a6  Yes         /lib/x86_64-linux-gnu/liblzma.so.5\n"
+~"0x00007ffff6832120  0x00007ffff684b8fb  Yes         /lib/x86_64-linux-gnu/liblz4.so.1\n"
+~"0x00007ffff671e580  0x00007ffff67eb9dc  Yes         /lib/x86_64-linux-gnu/libgcrypt.so.20\n"
+~"0x00007ffff66fad20  0x00007ffff6709711  Yes         /lib/x86_64-linux-gnu/libnsl.so.1\n"
+~"0x00007ffff66bf800  0x00007ffff66e7c33  Yes         /lib/x86_64-linux-gnu/libFLAC.so.8\n"
+~"0x00007ffff66aa480  0x00007ffff66ae539  Yes         /lib/x86_64-linux-gnu/libogg.so.0\n"
+~"0x00007ffff667d480  0x00007ffff6693c4d  Yes         /lib/x86_64-linux-gnu/libvorbis.so.0\n"
+~"0x00007ffff65e30c0  0x00007ffff65e577e  Yes         /lib/x86_64-linux-gnu/libvorbisenc.so.2\n"
+~"0x00007ffff65b7720  0x00007ffff65c611c  Yes         /lib/x86_64-linux-gnu/libresolv.so.2\n"
+~"0x00007ffff659de40  0x00007ffff65abe69  Yes         /lib/x86_64-linux-gnu/libbsd.so.0\n"
+~"0x00007ffff6578c60  0x00007ffff658aa92  Yes         /lib/x86_64-linux-gnu/libgpg-error.so.0\n"
+~"0x00007ffff562ed00  0x00007ffff5670632  Yes         /lib/x86_64-linux-gnu/libGLX_mesa.so.0\n"
+~"0x00007ffff55511a0  0x00007ffff555e8b0  Yes         /lib/x86_64-linux-gnu/libglapi.so.0\n"
+~"0x00007ffff5604700  0x00007ffff560dc49  Yes         /lib/x86_64-linux-gnu/libdrm.so.2\n"
+~"0x00007ffff55330a0  0x00007ffff553bb29  Yes         /lib/x86_64-linux-gnu/libxcb-glx.so.0\n"
+~"0x00007ffff55fc040  0x00007ffff55fc11f  Yes         /lib/x86_64-linux-gnu/libX11-xcb.so.1\n"
+~"0x00007ffff55f60a0  0x00007ffff55f7309  Yes         /lib/x86_64-linux-gnu/libxcb-dri2.so.0\n"
+~"0x00007ffff55240e0  0x00007ffff5524c37  Yes         /lib/x86_64-linux-gnu/libxcb-shm.so.0\n"
+~"0x00007ffff54f9230  0x00007ffff55144b7  Yes         /lib/x86_64-linux-gnu/libexpat.so.1\n"
+~"0x00007ffff54f10e0  0x00007ffff54f1fd7  Yes         /lib/x86_64-linux-gnu/libxcb-dri3.so.0\n"
+~"0x00007ffff54eb0a0  0x00007ffff54eb97a  Yes         /lib/x86_64-linux-gnu/libxcb-present.so.0\n"
+~"0x00007ffff54e3100  0x00007ffff54e5416  Yes         /lib/x86_64-linux-gnu/libxcb-sync.so.1\n"
+~"0x00007ffff52de960  0x00007ffff52dec2c  Yes         /lib/x86_64-linux-gnu/libxshmfence.so.1\n"
+~"0x00007ffff52d70a0  0x00007ffff52d98de  Yes         /lib/x86_64-linux-gnu/libxcb-xfixes.so.0\n"
+~"0x00007ffff3ae1440  0x00007ffff4a81e22  Yes         /usr/lib/x86_64-linux-gnu/dri/vmwgfx_dri.so\n"
+~"0x00007fffeec01e30  0x00007ffff155a633  Yes         /lib/x86_64-linux-gnu/libLLVM-12.so.1\n"
+~"0x00007fffee1f1280  0x00007fffee201e2b  Yes         /lib/x86_64-linux-gnu/libz.so.1\n"
+~"0x00007fffee14a240  0x00007fffee1dbd0a  Yes         /lib/x86_64-linux-gnu/libzstd.so.1\n"
+~"0x00007fffee138580  0x00007fffee13ef68  Yes         /lib/x86_64-linux-gnu/libsensors.so.5\n"
+~"0x00007fffee1282a0  0x00007fffee12eb5d  Yes         /lib/x86_64-linux-gnu/libdrm_radeon.so.1\n"
+~"0x00007fffee10d580  0x00007fffee11e105  Yes         /lib/x86_64-linux-gnu/libelf.so.1\n"
+~"0x00007fffee101740  0x00007fffee105e61  Yes         /lib/x86_64-linux-gnu/libdrm_amdgpu.so.1\n"
+~"0x00007fffee0f53a0  0x00007fffee0f90ae  Yes         /lib/x86_64-linux-gnu/libdrm_nouveau.so.2\n"
+~"0x00007fffee0ac6c0  0x00007fffee0ddf16  Yes         /lib/x86_64-linux-gnu/libvulkan.so.1\n"
+~"0x00007fffee06dfb0  0x00007fffee087f24  Yes         /lib/x86_64-linux-gnu/libedit.so.2\n"
+~"0x00007fffee0436a0  0x00007fffee05117c  Yes         /lib/x86_64-linux-gnu/libtinfo.so.6\n"
+1045^done
+(gdb) 
+1046^done,stack=[frame={level="0",addr="0x0000555555589c9c",func="draw_3d_character",file="window.cpp",fullname="/home/vmware/software_g/c612301099/game/window.cpp",line="205",arch="i386:x86-64"},frame={level="1",addr="0x000055555558a4bf",func="display_select",file="window.cpp",fullname="/home/vmware/software_g/c612301099/game/window.cpp",line="282",arch="i386:x86-64"},frame={level="2",addr="0x000055555558a6c3",func="selectWeapon",file="window.cpp",fullname="/home/vmware/software_g/c612301099/game/window.cpp",line="340",arch="i386:x86-64"},frame={level="3",addr="0x000055555555a3c3",func="main",file="game.cpp",fullname="/home/vmware/software_g/c612301099/game/game.cpp",line="334",arch="i386:x86-64"}]
+(gdb) 
+1047^done,ndeleted="1"
+(gdb) 
+1048^done,ndeleted="1"
+(gdb) 
+1049^done,ndeleted="1"
+(gdb) 
+1050^done,ndeleted="1"
+(gdb) 
+1051^done,ndeleted="1"
+(gdb) 
+1052^done,ndeleted="1"
+(gdb) 
+1053^done,ndeleted="1"
+(gdb) 
+1054^done,ndeleted="1"
+(gdb) 
+1055^done,ndeleted="1"
+(gdb) 
+1056^done,stack-args=[frame={level="0",args=[]},frame={level="1",args=[]},frame={level="2",args=[]},frame={level="3",args=[name="argc",name="argv"]}]
+(gdb) 
+1057^done
+(gdb) 
+1058^done,name="var14",numchild="0",value="1",type="int",thread-id="1",has_more="0"
+(gdb) 
+1059^done,ndeleted="1"
+(gdb) 
+1060^done,name="var15",numchild="1",value="0x7fffffffdbd8",type="char **",thread-id="1",has_more="0"
+(gdb) 
+1061^done,ndeleted="1"
+(gdb) 
+1062^done,stack-args=[frame={level="0",args=[]},frame={level="1",args=[]},frame={level="2",args=[]},frame={level="3",args=[name="argc",name="argv"]}]
+(gdb) 
+1063^done,name="var16",numchild="0",value="1",type="int",thread-id="1",has_more="0"
+(gdb) 
+1064^done,ndeleted="1"
+(gdb) 
+1065^done,name="var17",numchild="1",value="0x7fffffffdbd8",type="char **",thread-id="1",has_more="0"
+(gdb) 
+1066^done,ndeleted="1"
+(gdb) 
+1067^done
+(gdb) 
+1068^done,name="var18",numchild="0",value="{...}",type="std::vector<Objdata, std::allocator<Objdata> >",displayhint="array",dynamic="1",has_more="1"
+(gdb) 
+1069^done,name="var19",numchild="1",value="{...}",type="Objdata",has_more="0"
+(gdb) 
+1070^done,name="var20",numchild="0",value="1",type="GLuint",has_more="0"
+(gdb) 
+1071^done,name="var21",numchild="0",value="2",type="GLuint",has_more="0"
+(gdb) 
+1072^done,name="var22",numchild="0",value="{...}",type="std::vector<Objdata, std::allocator<Objdata> >",displayhint="array",dynamic="1",has_more="1"
+(gdb) 
+1073^done,name="var23",numchild="1",value="{...}",type="GameInfo",has_more="0"
+(gdb) 
+1074^done,variables=[{name="texture"}]
+(gdb) 
+1075^done,name="var24",numchild="0",value="329",type="GLuint",thread-id="1",has_more="0"
+(gdb) 
+1076^done,name="var25",numchild="0",value="{void (const Objdata &, float, float, float, GLuint)} 0x555555576f81 <makeObj(Objdata const&, float, float, float, unsigned int)>",type="void (const Objdata &, float, float, float, GLuint)",has_more="0"
+(gdb) 
+1077^done,numchild="1",children=[child={name="var23.public",exp="public",numchild="7",value=""}],has_more="0"
+(gdb) 
+1078^done,numchild="7",children=[child={name="var23.public.stts",exp="stts",numchild="0",value="GS_WeaponSelect",type="GameStts"},child={name="var23.public.mouse",exp="mouse",numchild="1",type="MouseStts"},child={name="var23.public.key",exp="key",numchild="1",type="KeyboardStts"},child={name="var23.public.timeStep",exp="timeStep",numchild="0",value="0",type="float"},child={name="var23.public.player",exp="player",numchild="1",value="0x555556807d60",type="CharaInfo *"},child={name="var23.public.msg",exp="msg",numchild="0",value="MSG_None",type="Msg"},child={name="var23.public.msgTexts",exp="msgTexts",numchild="6",type="GLuint *[6]"}],has_more="0"
+(gdb) 
+1079^done,numchild="1",children=[child={name="var23.public.player.public",exp="public",numchild="20",value=""}],has_more="0"
+(gdb) 
+1080^done,numchild="20",children=[child={name="var23.public.player.public.stts",exp="stts",numchild="0",value="CS_Disable",type="CharaStts"},child={name="var23.public.player.public.type",exp="type",numchild="0",value="CT_Player",type="CharaType"},child={name="var23.public.player.public.weapon",exp="weapon",numchild="1",type="WeaponStts"},child={name="var23.public.player.public.skill",exp="skill",numchild="1",type="SkillStts"},child={name="var23.public.player.public.special",exp="special",numchild="1",type="SpecialStts"},child={name="var23.public.player.public.entity",exp="entity",numchild="1",value="0x0",type="CharaTypeInfo *"},child={name="var23.public.player.public.dir",exp="dir",numchild="1",type="SDL_FPoint"},child={name="var23.public.player.public.point",exp="point",numchild="1",type="struct {...}"},child={name="var23.public.player.public.rest",exp="rest",numchild="0",value="0",type="int"},child={name="var23.public.player.public.9_anonymous",exp="<anonymous union>",numchild="1",type="union {...}"},child={name="var23.public.player.public.isJumping",exp="isJumping",numchild="0",value="false",type="bool"},child={name="var23.public.player.public.jumpSpeed",exp="jumpSpeed",numchild="0",value="0",type="float"},child={name="var23.public.player.public.rightArmRotation",exp="rightArmRotation",numchild="0",value="8.60000038",type="float"},child={name="var23.public.player.public.leftArmRotation",exp="leftArmRotation",numchild="0",value="-8.60000038",type="float"},child={name="var23.public.player.public.rightArmIncreasing",exp="rightArmIncreasing",numchild="0",value="true",type="bool"},child={name="var23.public.player.public.leftArmIncreasing",exp="leftArmIncreasing",numchild="0",value="true",type="bool"},child={name="var23.public.player.public.rightLegRotation",exp="rightLegRotation",numchild="0",value="-8.60000038",type="float"},child={name="var23.public.player.public.leftLegRotation",exp="leftLegRotation",numchild="0",value="8.60000038",type="float"},child={name="var23.public.player.public.rightLegIncreasing",exp="rightLegIncreasing",numchild="0",value="true",type="bool"},child={name="var23.public.player.public.leftLegIncreasing",exp="leftLegIncreasing",numchild="0",value="true",type="bool"}],has_more="0"
+(gdb) 
+^running
+*running,thread-id="all"
+(gdb) 
+=breakpoint-modified,bkpt={number="2",type="breakpoint",disp="keep",enabled="y",addr="0x0000555555589c9c",func="draw_3d_character()",file="window.cpp",fullname="/home/vmware/software_g/c612301099/game/window.cpp",line="205",thread-groups=["i1"],times="2",original-location="window.cpp:205"}
+~"\n"
+~"Breakpoint 2, draw_3d_character () at window.cpp:205\n"
+~"205\t        obj_s = loadObjData(\"../select/AK-47_rightArm_sub.txt\");  \n"
+*stopped,reason="breakpoint-hit",disp="keep",bkptno="2",frame={addr="0x0000555555589c9c",func="draw_3d_character",args=[],file="window.cpp",fullname="/home/vmware/software_g/c612301099/game/window.cpp",line="205",arch="i386:x86-64"},thread-id="1",stopped-threads="all",core="0"
+1081^done,stack=[frame={level="0",addr="0x0000555555589c9c",func="draw_3d_character",file="window.cpp",fullname="/home/vmware/software_g/c612301099/game/window.cpp",line="205",arch="i386:x86-64"},frame={level="1",addr="0x000055555558a4bf",func="display_select",file="window.cpp",fullname="/home/vmware/software_g/c612301099/game/window.cpp",line="282",arch="i386:x86-64"},frame={level="2",addr="0x000055555558a6c3",func="selectWeapon",file="window.cpp",fullname="/home/vmware/software_g/c612301099/game/window.cpp",line="340",arch="i386:x86-64"},frame={level="3",addr="0x000055555555a3c3",func="main",file="game.cpp",fullname="/home/vmware/software_g/c612301099/game/game.cpp",line="334",arch="i386:x86-64"}]
+(gdb) 
+1082^done,ndeleted="1"
+(gdb) 
+1083^done,ndeleted="1"
+(gdb) 
+1084^done,ndeleted="1"
+(gdb) 
+1085^done,ndeleted="1"
+(gdb) 
+1086^done,ndeleted="1"
+(gdb) 
+1087^done,ndeleted="30"
+(gdb) 
+1088^done,ndeleted="1"
+(gdb) 
+1089^done,ndeleted="1"
+(gdb) 
+1090^done,stack-args=[frame={level="0",args=[]},frame={level="1",args=[]},frame={level="2",args=[]},frame={level="3",args=[name="argc",name="argv"]}]
+(gdb) 
+1091^done
+(gdb) 
+1092^done,name="var26",numchild="0",value="1",type="int",thread-id="1",has_more="0"
+(gdb) 
+1093^done,ndeleted="1"
+(gdb) 
+1094^done,name="var27",numchild="1",value="0x7fffffffdbd8",type="char **",thread-id="1",has_more="0"
+(gdb) 
+1095^done,ndeleted="1"
+(gdb) 
+1096^done,stack-args=[frame={level="0",args=[]},frame={level="1",args=[]},frame={level="2",args=[]},frame={level="3",args=[name="argc",name="argv"]}]
+(gdb) 
+1097^done,name="var28",numchild="0",value="1",type="int",thread-id="1",has_more="0"
+(gdb) 
+1098^done,ndeleted="1"
+(gdb) 
+1099^done,name="var29",numchild="1",value="0x7fffffffdbd8",type="char **",thread-id="1",has_more="0"
+(gdb) 
+1100^done,ndeleted="1"
+(gdb) 
+1101^done
+(gdb) 
+1102^done,name="var30",numchild="0",value="{...}",type="std::vector<Objdata, std::allocator<Objdata> >",displayhint="array",dynamic="1",has_more="1"
+(gdb) 
+1103^done,name="var31",numchild="1",value="{...}",type="Objdata",has_more="0"
+(gdb) 
+1104^done,name="var32",numchild="0",value="1",type="GLuint",has_more="0"
+(gdb) 
+1105^done,name="var33",numchild="0",value="2",type="GLuint",has_more="0"
+(gdb) 
+1106^done,name="var34",numchild="0",value="{...}",type="std::vector<Objdata, std::allocator<Objdata> >",displayhint="array",dynamic="1",has_more="1"
+(gdb) 
+1107^done,name="var35",numchild="1",value="{...}",type="GameInfo",has_more="0"
+(gdb) 
+1108^done,numchild="1",children=[child={name="var35.public",exp="public",numchild="7",value=""}],has_more="0"
+(gdb) 
+1109^done,numchild="7",children=[child={name="var35.public.stts",exp="stts",numchild="0",value="GS_WeaponSelect",type="GameStts"},child={name="var35.public.mouse",exp="mouse",numchild="1",type="MouseStts"},child={name="var35.public.key",exp="key",numchild="1",type="KeyboardStts"},child={name="var35.public.timeStep",exp="timeStep",numchild="0",value="0",type="float"},child={name="var35.public.player",exp="player",numchild="1",value="0x555556807d60",type="CharaInfo *"},child={name="var35.public.msg",exp="msg",numchild="0",value="MSG_None",type="Msg"},child={name="var35.public.msgTexts",exp="msgTexts",numchild="6",type="GLuint *[6]"}],has_more="0"
+(gdb) 
+1110^done,variables=[{name="texture"}]
+(gdb) 
+1111^done,name="var36",numchild="0",value="439",type="GLuint",thread-id="1",has_more="0"
+(gdb) 
+1112^done,numchild="1",children=[child={name="var35.public.player.public",exp="public",numchild="20",value=""}],has_more="0"
+(gdb) 
+1113^done,numchild="20",children=[child={name="var35.public.player.public.stts",exp="stts",numchild="0",value="CS_Disable",type="CharaStts"},child={name="var35.public.player.public.type",exp="type",numchild="0",value="CT_Player",type="CharaType"},child={name="var35.public.player.public.weapon",exp="weapon",numchild="1",type="WeaponStts"},child={name="var35.public.player.public.skill",exp="skill",numchild="1",type="SkillStts"},child={name="var35.public.player.public.special",exp="special",numchild="1",type="SpecialStts"},child={name="var35.public.player.public.entity",exp="entity",numchild="1",value="0x0",type="CharaTypeInfo *"},child={name="var35.public.player.public.dir",exp="dir",numchild="1",type="SDL_FPoint"},child={name="var35.public.player.public.point",exp="point",numchild="1",type="struct {...}"},child={name="var35.public.player.public.rest",exp="rest",numchild="0",value="0",type="int"},child={name="var35.public.player.public.9_anonymous",exp="<anonymous union>",numchild="1",type="union {...}"},child={name="var35.public.player.public.isJumping",exp="isJumping",numchild="0",value="false",type="bool"},child={name="var35.public.player.public.jumpSpeed",exp="jumpSpeed",numchild="0",value="0",type="float"},child={name="var35.public.player.public.rightArmRotation",exp="rightArmRotation",numchild="0",value="3104.6001",type="float"},child={name="var35.public.player.public.leftArmRotation",exp="leftArmRotation",numchild="0",value="-3104.6001",type="float"},child={name="var35.public.player.public.rightArmIncreasing",exp="rightArmIncreasing",numchild="0",value="false",type="bool"},child={name="var35.public.player.public.leftArmIncreasing",exp="leftArmIncreasing",numchild="0",value="false",type="bool"},child={name="var35.public.player.public.rightLegRotation",exp="rightLegRotation",numchild="0",value="-3104.6001",type="float"},child={name="var35.public.player.public.leftLegRotation",exp="leftLegRotation",numchild="0",value="3104.6001",type="float"},child={name="var35.public.player.public.rightLegIncreasing",exp="rightLegIncreasing",numchild="0",value="false",type="bool"},child={name="var35.public.player.public.leftLegIncreasing",exp="leftLegIncreasing",numchild="0",value="false",type="bool"}],has_more="0"
+(gdb) 
+^running
+*running,thread-id="all"
+(gdb) 
+=breakpoint-modified,bkpt={number="2",type="breakpoint",disp="keep",enabled="y",addr="0x0000555555589c9c",func="draw_3d_character()",file="window.cpp",fullname="/home/vmware/software_g/c612301099/game/window.cpp",line="205",thread-groups=["i1"],times="3",original-location="window.cpp:205"}
+~"\n"
+~"Breakpoint 2, draw_3d_character () at window.cpp:205\n"
+~"205\t        obj_s = loadObjData(\"../select/AK-47_rightArm_sub.txt\");  \n"
+*stopped,reason="breakpoint-hit",disp="keep",bkptno="2",frame={addr="0x0000555555589c9c",func="draw_3d_character",args=[],file="window.cpp",fullname="/home/vmware/software_g/c612301099/game/window.cpp",line="205",arch="i386:x86-64"},thread-id="1",stopped-threads="all",core="0"
+1114^done,stack=[frame={level="0",addr="0x0000555555589c9c",func="draw_3d_character",file="window.cpp",fullname="/home/vmware/software_g/c612301099/game/window.cpp",line="205",arch="i386:x86-64"},frame={level="1",addr="0x000055555558a4bf",func="display_select",file="window.cpp",fullname="/home/vmware/software_g/c612301099/game/window.cpp",line="282",arch="i386:x86-64"},frame={level="2",addr="0x000055555558a6c3",func="selectWeapon",file="window.cpp",fullname="/home/vmware/software_g/c612301099/game/window.cpp",line="340",arch="i386:x86-64"},frame={level="3",addr="0x000055555555a3c3",func="main",file="game.cpp",fullname="/home/vmware/software_g/c612301099/game/game.cpp",line="334",arch="i386:x86-64"}]
+(gdb) 
+1115^done,ndeleted="1"
+(gdb) 
+1116^done,ndeleted="1"
+(gdb) 
+1117^done,ndeleted="1"
+(gdb) 
+1118^done,ndeleted="1"
+(gdb) 
+1119^done,ndeleted="1"
+(gdb) 
+1120^done,ndeleted="30"
+(gdb) 
+1121^done,ndeleted="1"
+(gdb) 
+1122^done,stack-args=[frame={level="0",args=[]},frame={level="1",args=[]},frame={level="2",args=[]},frame={level="3",args=[name="argc",name="argv"]}]
+(gdb) 
+1123^done
+(gdb) 
+1124^done,name="var37",numchild="0",value="1",type="int",thread-id="1",has_more="0"
+(gdb) 
+1125^done,ndeleted="1"
+(gdb) 
+1126^done,name="var38",numchild="1",value="0x7fffffffdbd8",type="char **",thread-id="1",has_more="0"
+(gdb) 
+1127^done,ndeleted="1"
+(gdb) 
+1128^done,stack-args=[frame={level="0",args=[]},frame={level="1",args=[]},frame={level="2",args=[]},frame={level="3",args=[name="argc",name="argv"]}]
+(gdb) 
+1129^done,name="var39",numchild="0",value="1",type="int",thread-id="1",has_more="0"
+(gdb) 
+1130^done,ndeleted="1"
+(gdb) 
+1131^done,name="var40",numchild="1",value="0x7fffffffdbd8",type="char **",thread-id="1",has_more="0"
+(gdb) 
+1132^done,ndeleted="1"
+(gdb) 
+1133^done
+(gdb) 
+1134^done,name="var41",numchild="0",value="{...}",type="std::vector<Objdata, std::allocator<Objdata> >",displayhint="array",dynamic="1",has_more="1"
+(gdb) 
+1135^done,name="var42",numchild="1",value="{...}",type="Objdata",has_more="0"
+(gdb) 
+1136^done,name="var43",numchild="0",value="1",type="GLuint",has_more="0"
+(gdb) 
+1137^done,name="var44",numchild="0",value="2",type="GLuint",has_more="0"
+(gdb) 
+1138^done,name="var45",numchild="0",value="{...}",type="std::vector<Objdata, std::allocator<Objdata> >",displayhint="array",dynamic="1",has_more="1"
+(gdb) 
+1139^done,name="var46",numchild="1",value="{...}",type="GameInfo",has_more="0"
+(gdb) 
+&"Attempt to use a type name as an expression.\n"
+1140^error,msg="-var-create: unable to create variable object"
+(gdb) 
+1141^done,numchild="1",children=[child={name="var46.public",exp="public",numchild="7",value=""}],has_more="0"
+(gdb) 
+1142^done,numchild="7",children=[child={name="var46.public.stts",exp="stts",numchild="0",value="GS_WeaponSelect",type="GameStts"},child={name="var46.public.mouse",exp="mouse",numchild="1",type="MouseStts"},child={name="var46.public.key",exp="key",numchild="1",type="KeyboardStts"},child={name="var46.public.timeStep",exp="timeStep",numchild="0",value="0",type="float"},child={name="var46.public.player",exp="player",numchild="1",value="0x555556807d60",type="CharaInfo *"},child={name="var46.public.msg",exp="msg",numchild="0",value="MSG_None",type="Msg"},child={name="var46.public.msgTexts",exp="msgTexts",numchild="6",type="GLuint *[6]"}],has_more="0"
+(gdb) 
+1143^done,variables=[{name="texture"}]
+(gdb) 
+1144^done,name="var48",numchild="0",value="439",type="GLuint",thread-id="1",has_more="0"
+(gdb) 
+1145^done,numchild="1",children=[child={name="var46.public.player.public",exp="public",numchild="20",value=""}],has_more="0"
+(gdb) 
+1146^done,numchild="20",children=[child={name="var46.public.player.public.stts",exp="stts",numchild="0",value="CS_Disable",type="CharaStts"},child={name="var46.public.player.public.type",exp="type",numchild="0",value="CT_Player",type="CharaType"},child={name="var46.public.player.public.weapon",exp="weapon",numchild="1",type="WeaponStts"},child={name="var46.public.player.public.skill",exp="skill",numchild="1",type="SkillStts"},child={name="var46.public.player.public.special",exp="special",numchild="1",type="SpecialStts"},child={name="var46.public.player.public.entity",exp="entity",numchild="1",value="0x0",type="CharaTypeInfo *"},child={name="var46.public.player.public.dir",exp="dir",numchild="1",type="SDL_FPoint"},child={name="var46.public.player.public.point",exp="point",numchild="1",type="struct {...}"},child={name="var46.public.player.public.rest",exp="rest",numchild="0",value="0",type="int"},child={name="var46.public.player.public.9_anonymous",exp="<anonymous union>",numchild="1",type="union {...}"},child={name="var46.public.player.public.isJumping",exp="isJumping",numchild="0",value="false",type="bool"},child={name="var46.public.player.public.jumpSpeed",exp="jumpSpeed",numchild="0",value="0",type="float"},child={name="var46.public.player.public.rightArmRotation",exp="rightArmRotation",numchild="0",value="152.700195",type="float"},child={name="var46.public.player.public.leftArmRotation",exp="leftArmRotation",numchild="0",value="-152.700195",type="float"},child={name="var46.public.player.public.rightArmIncreasing",exp="rightArmIncreasing",numchild="0",value="false",type="bool"},child={name="var46.public.player.public.leftArmIncreasing",exp="leftArmIncreasing",numchild="0",value="false",type="bool"},child={name="var46.public.player.public.rightLegRotation",exp="rightLegRotation",numchild="0",value="-152.700195",type="float"},child={name="var46.public.player.public.leftLegRotation",exp="leftLegRotation",numchild="0",value="152.700195",type="float"},child={name="var46.public.player.public.rightLegIncreasing",exp="rightLegIncreasing",numchild="0",value="false",type="bool"},child={name="var46.public.player.public.leftLegIncreasing",exp="leftLegIncreasing",numchild="0",value="false",type="bool"}],has_more="0"
+(gdb) 
+^running
+*running,thread-id="all"
+(gdb) 
+=breakpoint-modified,bkpt={number="2",type="breakpoint",disp="keep",enabled="y",addr="0x0000555555589c9c",func="draw_3d_character()",file="window.cpp",fullname="/home/vmware/software_g/c612301099/game/window.cpp",line="205",thread-groups=["i1"],times="4",original-location="window.cpp:205"}
+~"\n"
+~"Breakpoint 2, draw_3d_character () at window.cpp:205\n"
+~"205\t        obj_s = loadObjData(\"../select/AK-47_rightArm_sub.txt\");  \n"
+*stopped,reason="breakpoint-hit",disp="keep",bkptno="2",frame={addr="0x0000555555589c9c",func="draw_3d_character",args=[],file="window.cpp",fullname="/home/vmware/software_g/c612301099/game/window.cpp",line="205",arch="i386:x86-64"},thread-id="1",stopped-threads="all",core="1"
+1147^done,stack=[frame={level="0",addr="0x0000555555589c9c",func="draw_3d_character",file="window.cpp",fullname="/home/vmware/software_g/c612301099/game/window.cpp",line="205",arch="i386:x86-64"},frame={level="1",addr="0x000055555558a4bf",func="display_select",file="window.cpp",fullname="/home/vmware/software_g/c612301099/game/window.cpp",line="282",arch="i386:x86-64"},frame={level="2",addr="0x000055555558a6c3",func="selectWeapon",file="window.cpp",fullname="/home/vmware/software_g/c612301099/game/window.cpp",line="340",arch="i386:x86-64"},frame={level="3",addr="0x000055555555a3c3",func="main",file="game.cpp",fullname="/home/vmware/software_g/c612301099/game/game.cpp",line="334",arch="i386:x86-64"}]
+(gdb) 
+1148^done,ndeleted="1"
+(gdb) 
+1149^done,ndeleted="1"
+(gdb) 
+1150^done,ndeleted="1"
+(gdb) 
+1151^done,ndeleted="1"
+(gdb) 
+1152^done,ndeleted="1"
+(gdb) 
+1153^done,ndeleted="30"
+(gdb) 
+1154^done,ndeleted="1"
+(gdb) 
+1155^done,stack-args=[frame={level="0",args=[]},frame={level="1",args=[]},frame={level="2",args=[]},frame={level="3",args=[name="argc",name="argv"]}]
+(gdb) 
+1156^done
+(gdb) 
+1157^done,name="var49",numchild="0",value="1",type="int",thread-id="1",has_more="0"
+(gdb) 
+1158^done,ndeleted="1"
+(gdb) 
+1159^done,name="var50",numchild="1",value="0x7fffffffdbd8",type="char **",thread-id="1",has_more="0"
+(gdb) 
+1160^done,ndeleted="1"
+(gdb) 
+1161^done,stack-args=[frame={level="0",args=[]},frame={level="1",args=[]},frame={level="2",args=[]},frame={level="3",args=[name="argc",name="argv"]}]
+(gdb) 
+1162^done,name="var51",numchild="0",value="1",type="int",thread-id="1",has_more="0"
+(gdb) 
+1163^done,ndeleted="1"
+(gdb) 
+1164^done,name="var52",numchild="1",value="0x7fffffffdbd8",type="char **",thread-id="1",has_more="0"
+(gdb) 
+1165^done,ndeleted="1"
+(gdb) 
+1166^done
+(gdb) 
+1167^done,name="var53",numchild="0",value="{...}",type="std::vector<Objdata, std::allocator<Objdata> >",displayhint="array",dynamic="1",has_more="1"
+(gdb) 
+1168^done,name="var54",numchild="1",value="{...}",type="Objdata",has_more="0"
+(gdb) 
+1169^done,name="var55",numchild="0",value="1",type="GLuint",has_more="0"
+(gdb) 
+1170^done,name="var56",numchild="0",value="2",type="GLuint",has_more="0"
+(gdb) 
+1171^done,name="var57",numchild="0",value="{...}",type="std::vector<Objdata, std::allocator<Objdata> >",displayhint="array",dynamic="1",has_more="1"
+(gdb) 
+1172^done,name="var58",numchild="1",value="{...}",type="GameInfo",has_more="0"
+(gdb) 
+1173^done,numchild="1",children=[child={name="var58.public",exp="public",numchild="7",value=""}],has_more="0"
+(gdb) 
+1174^done,numchild="7",children=[child={name="var58.public.stts",exp="stts",numchild="0",value="GS_WeaponSelect",type="GameStts"},child={name="var58.public.mouse",exp="mouse",numchild="1",type="MouseStts"},child={name="var58.public.key",exp="key",numchild="1",type="KeyboardStts"},child={name="var58.public.timeStep",exp="timeStep",numchild="0",value="0",type="float"},child={name="var58.public.player",exp="player",numchild="1",value="0x555556807d60",type="CharaInfo *"},child={name="var58.public.msg",exp="msg",numchild="0",value="MSG_None",type="Msg"},child={name="var58.public.msgTexts",exp="msgTexts",numchild="6",type="GLuint *[6]"}],has_more="0"
+(gdb) 
+1175^done,variables=[{name="texture"}]
+(gdb) 
+1176^done,name="var59",numchild="0",value="439",type="GLuint",thread-id="1",has_more="0"
+(gdb) 
+1177^done,numchild="1",children=[child={name="var58.public.player.public",exp="public",numchild="20",value=""}],has_more="0"
+(gdb) 
+1178^done,numchild="20",children=[child={name="var58.public.player.public.stts",exp="stts",numchild="0",value="CS_Disable",type="CharaStts"},child={name="var58.public.player.public.type",exp="type",numchild="0",value="CT_Player",type="CharaType"},child={name="var58.public.player.public.weapon",exp="weapon",numchild="1",type="WeaponStts"},child={name="var58.public.player.public.skill",exp="skill",numchild="1",type="SkillStts"},child={name="var58.public.player.public.special",exp="special",numchild="1",type="SpecialStts"},child={name="var58.public.player.public.entity",exp="entity",numchild="1",value="0x0",type="CharaTypeInfo *"},child={name="var58.public.player.public.dir",exp="dir",numchild="1",type="SDL_FPoint"},child={name="var58.public.player.public.point",exp="point",numchild="1",type="struct {...}"},child={name="var58.public.player.public.rest",exp="rest",numchild="0",value="0",type="int"},child={name="var58.public.player.public.9_anonymous",exp="<anonymous union>",numchild="1",type="union {...}"},child={name="var58.public.player.public.isJumping",exp="isJumping",numchild="0",value="false",type="bool"},child={name="var58.public.player.public.jumpSpeed",exp="jumpSpeed",numchild="0",value="0",type="float"},child={name="var58.public.player.public.rightArmRotation",exp="rightArmRotation",numchild="0",value="-1569.89978",type="float"},child={name="var58.public.player.public.leftArmRotation",exp="leftArmRotation",numchild="0",value="1569.89978",type="float"},child={name="var58.public.player.public.rightArmIncreasing",exp="rightArmIncreasing",numchild="0",value="true",type="bool"},child={name="var58.public.player.public.leftArmIncreasing",exp="leftArmIncreasing",numchild="0",value="true",type="bool"},child={name="var58.public.player.public.rightLegRotation",exp="rightLegRotation",numchild="0",value="1569.89978",type="float"},child={name="var58.public.player.public.leftLegRotation",exp="leftLegRotation",numchild="0",value="-1569.89978",type="float"},child={name="var58.public.player.public.rightLegIncreasing",exp="rightLegIncreasing",numchild="0",value="true",type="bool"},child={name="var58.public.player.public.leftLegIncreasing",exp="leftLegIncreasing",numchild="0",value="true",type="bool"}],has_more="0"
+(gdb) 
+&"kill\n"
+~"Kill the program being debugged? (y or n) [answered Y; input not from terminal]\n"
+=thread-exited,id="1",group-id="i1"
+=thread-group-exited,id="i1"
+~"[Inferior 1 (process 5059) killed]\n"
+1179^done
+(gdb) 
+^exit

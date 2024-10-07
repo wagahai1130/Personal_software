@@ -60,6 +60,13 @@ typedef struct {
     float z;        
 } CharaJointData;
 
+/* 銃弾の初期座標を格納する構造体 */
+typedef struct {
+    double x;
+    double y;
+    double z;
+} Data;
+
 /* キャラクタータイプ */
 typedef enum {
     CT_Player   = 0,  // プレイヤー
@@ -90,6 +97,24 @@ typedef enum {
     CS_HitEnd   = 7,  // 被弾終わり
 } CharaStts;
 
+/* 武器の選択状態 */
+typedef struct {
+    SDL_bool AK_47;
+    SDL_bool AWP;
+    SDL_bool Sword;
+    SDL_bool Knife;
+} WeaponStts;
+
+/* スキルの選択状態 */
+typedef struct {
+    SDL_bool Asteroid;
+} SkillStts;
+
+/* 必殺技の選択状態 */
+typedef struct {
+    SDL_bool Hujin;
+} SpecialStts;
+
 /* キャラクタータイプ別情報 */
 typedef struct {
     Objdata obj;      // キャラの形状
@@ -106,6 +131,9 @@ typedef struct {
 typedef struct CharaInfo_t {
     CharaStts stts;        // 現在の状態
     CharaType type;        // キャラクタータイプ
+    WeaponStts weapon;
+    SkillStts skill;
+    SpecialStts special;
     CharaTypeInfo* entity; // タイプ別情報の実体
     SDL_FPoint dir;        // 現在の方向（大きさ最大1となる成分）
     struct {
@@ -186,9 +214,8 @@ typedef struct {
 
 /* ゲームの状態 */
 typedef enum {
-    GS_End     = 0, // 終了
-    GS_Playing = 1, // 通常
-    GS_Ready   = 2, // 開始前
+    GS_WeaponSelect = 0, // 武器選択画面
+    GS_Playing = 1,      // ゲーム中
 } GameStts;
 
 /* ゲームの情報 */
@@ -234,12 +261,20 @@ extern std::unordered_map<std::string, std::vector<glm::vec3>> convexHullCache;
 extern GLuint charaTexture1;
 extern GLuint bodyTexture1;
 extern GLuint elementTexture;
+extern GLuint redTexture;
+extern GLuint gun_arm_subTexture;
+extern GLuint swordTexture;
 extern float deltaTime;
+extern Uint32 lastFrameTime;
+extern Data Bulletdata;
 
 /* 関数 */
 // game.cpp
 int PrintError(const char* str);
+void calculateDeltaTime();
+void displayFPS();
 // system.cpp
+int read_data_from_file(const char *filename, Data *data);
 GLuint loadTexture(const char* path);
 void loadObjvalData(const std::string& filename, Objdata& obj);
 Objdata loadObjData(const std::string& filename);

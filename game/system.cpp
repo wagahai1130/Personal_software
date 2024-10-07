@@ -29,7 +29,11 @@ GLuint charaTexture1;
 GLuint bodyTexture1;
 GLuint selectTexture;
 GLuint elementTexture;
+GLuint redTexture;
+GLuint gun_arm_subTexture;
+GLuint swordTexture;
 Objdata obj;
+Data Bulletdata;
 // 凸包のキャッシュ
 std::unordered_map<std::string, std::vector<glm::vec3>> convexHullCache;
 
@@ -101,12 +105,31 @@ void InitSystem() {
     gGame.player->point.z = 0.0f;
     gGame.player->isJumping = false;
     gGame.player->jumpSpeed = 0.0f;
+    gGame.stts = GS_WeaponSelect;
 
     eye[0] = gGame.player->point.x;
     eye[1] = gGame.player->point.y;
-    eye[2] = gGame.player->point.z + 1.0;
+    eye[2] = gGame.player->point.z + 0.6;
 }
 
+// ファイルからデータを読み取り、構造体に格納する関数
+int read_data_from_file(const char *filename, Data *data) {
+    FILE *file = fopen(filename, "r");
+    if (file == NULL) {
+        perror("Error opening file");
+        return -1;  // ファイルが開けなかった場合
+    }
+
+    // ファイルから3つの浮動小数点数を読み取る
+    if (fscanf(file, "%lf,%lf,%lf", &data->x, &data->y, &data->z) != 3) {
+        fprintf(stderr, "Error reading data from file\n");
+        fclose(file);
+        return -1;  // データの読み取りに失敗した場合
+    }
+
+    fclose(file);  // ファイルを閉じる
+    return 0;  // 成功
+}
 
 void createStaticObjectList() {
     staticObjectList = glGenLists(1);
@@ -321,8 +344,11 @@ void initializeRendering() {
     skyTexture = loadTexture("../texture/sky.jpg");
     charaTexture1 = loadTexture("../texture/face1.png");
     bodyTexture1 = loadTexture("../texture/body1.png");
-    selectTexture = loadTexture("./texture/select.jpg"); 
-    elementTexture = loadTexture("./texture/element.jpg");
+    selectTexture = loadTexture("../texture/select.jpg"); 
+    elementTexture = loadTexture("../texture/element.jpg");
+    redTexture = loadTexture("../texture/red.jpg");
+    gun_arm_subTexture = loadTexture("../texture/gun_arm.jpg");
+    swordTexture = loadTexture("../texture/sword.jpg");
     std::cout << "Total loaded objects: " << objDataArray.size() << std::endl;
     std::cout << "Total loaded charaData: " << charaDataArray.size() << std::endl;
 }
@@ -363,7 +389,27 @@ void renderBody(float r, float g, float b){
 
 //右腕
 void renderRightArm(float r, float g, float b) {
-    obj = loadObjData("../chara/rightArm.txt");
+    GLuint texture;
+    if(gGame.player->weapon.AK_47 == SDL_TRUE){
+        obj = loadObjData("../select/AK-47_rightArm_sub.txt");  
+        texture = gun_arm_subTexture;  
+    }
+    else if(gGame.player->weapon.AWP == SDL_TRUE){
+        obj = loadObjData("../select/AWP_rightArm_sub.txt");  
+        texture = gun_arm_subTexture;  
+    }
+    else if(gGame.player->weapon.Sword == SDL_TRUE){
+        obj = loadObjData("../select/Sword_rightArm_sub.txt");  
+        texture = swordTexture;  
+    }
+    else if(gGame.player->weapon.Knife == SDL_TRUE){
+        obj = loadObjData("../select/Knife_rightArm_sub.txt");  
+        texture = swordTexture;  
+    }
+    else if(gGame.player->weapon.AK_47 == SDL_FALSE && gGame.player->weapon.AWP == SDL_FALSE && gGame.player->weapon.Sword == SDL_FALSE && gGame.player->weapon.Knife == SDL_FALSE){
+        obj = loadObjData("../chara/rightArm.txt");
+        texture = bodyTexture1;
+    }
 
     glPushMatrix();
 
@@ -380,7 +426,7 @@ void renderRightArm(float r, float g, float b) {
     glTranslatef(0.185f, 0.0f, -0.65f);
 
     // 右腕を描画
-    makeObj(obj, r, g, b, bodyTexture1);
+    makeObj(obj, r, g, b, texture);
 
     glPopMatrix();
 }
@@ -612,7 +658,7 @@ std::vector<glm::vec3> calculateConvexHullQhull(const std::vector<glm::vec3>& po
     qh_zero(qh, nullptr);  // Qhullの初期化関数を呼び出し
 
     // qh_new_qhull呼び出し
-    int exitcode = qh_new_qhull(qh, dimension, numPoints, qhullPoints.data(), False, (char*)"qhull Qt", stdout, stderr);
+    int exitcode = qh_new_qhull(qh, dimension, numPoints, qhullPoints.data(), False, (char*)"qhull Qt", NULL, NULL);
     if (exitcode != 0) {
         std::cerr << "Qhull error: Failed to compute convex hull" << std::endl;
         qh_freeqhull(qh, True);

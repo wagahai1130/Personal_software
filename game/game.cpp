@@ -27,9 +27,29 @@ SDL_GLContext context;
 
 // 経過時間を計算する関数
 void calculateDeltaTime() {
-    Uint32 currentFrameTime = SDL_GetTicks();  // 現在のフレームの時刻を取得
-    deltaTime = (currentFrameTime - lastFrameTime) / 1000.0f;  // ミリ秒を秒に変換
-    lastFrameTime = currentFrameTime;  // 次フレームのために現在時刻を保存
+    Uint32 currentFrameTime = SDL_GetTicks();
+    deltaTime = (currentFrameTime - lastFrameTime) / 1000.0f;
+
+    // deltaTimeが0.1秒（10FPS以下相当）を超えないようにする
+    if (deltaTime > 0.1f) {
+        deltaTime = 0.1f;
+    }
+
+    lastFrameTime = currentFrameTime;
+}
+
+void displayFPS() {
+    static Uint32 lastTime = 0;
+    static int frames = 0;
+    Uint32 currentTime = SDL_GetTicks();
+    frames++;
+
+    if (currentTime - lastTime > 1000) { // 1秒ごとにFPSを表示
+        float fps = frames * 1000.0f / (currentTime - lastTime);
+        std::cout << "FPS: " << fps << std::endl;
+        frames = 0;
+        lastTime = currentTime;
+    }
 }
 
 void handleKeyboardEvent(const SDL_Event& event) {
@@ -275,11 +295,11 @@ void updatePlayerPosition() {
     }
 
     // --- カメラの位置を更新 ---
-    float cameraDistance = 2.5f;
+    float cameraDistance = -0.1f;
     float pitchRadians = glm::radians(cameraPitch); 
     eye[0] = gGame.player->point.x - forwardX * cameraDistance;
     eye[1] = gGame.player->point.y - forwardY * cameraDistance;
-    eye[2] = gGame.player->point.z + 1.0f;
+    eye[2] = gGame.player->point.z + 0.6f;
 
     cnt[0] = eye[0] + forwardX;
     cnt[1] = eye[1] + forwardY;
@@ -296,6 +316,7 @@ void idleFunc() {
         sphereRotationAngle -= 360.0f;
     }
     displayFunc();
+    displayFPS();
 }
 
 int main(int argc, char** argv) {
@@ -322,8 +343,6 @@ int main(int argc, char** argv) {
         exit(1);
     }
 
-    lastFrameTime = SDL_GetTicks(); // 初期フレームの時刻を設定
-
     if (SDL_GL_SetSwapInterval(1) < 0) {
         std::cerr << "Warning: Unable to set VSync! SDL Error: " << SDL_GetError() << std::endl;
     }
@@ -331,15 +350,17 @@ int main(int argc, char** argv) {
     InitSystem();
     InitWindow(window, context);
     
-    //selectWeapon();
-
+    // ゲームのフェーズに応じて処理を変更
+    if (gGame.stts == GS_WeaponSelect) {
+        selectWeapon(); // 武器選択画面を表示
+    } 
     // 相対モードを有効にする
     if (SDL_SetRelativeMouseMode(SDL_TRUE) != 0) {
         std::cerr << "Failed to enable relative mouse mode: " << SDL_GetError() << std::endl;
         return -1;
     }
-    createStaticObjectList();
-
+    lastFrameTime = SDL_GetTicks();
+    createStaticObjectList(); 
     bool running = true;
     while (running) {
         SDL_Event event;
