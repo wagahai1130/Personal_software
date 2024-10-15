@@ -3,6 +3,7 @@
  * 機能       : ユーザーインターフェース処理
  */
 #include "system.h"
+#include "constants.h"
 #include <SDL2/SDL_opengl.h>
 #include <SDL2/SDL_image.h>
 

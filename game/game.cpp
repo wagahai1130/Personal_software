@@ -3,6 +3,7 @@
  * 機能　　　： メインルーチン
  */
 #include "system.h"
+#include "constants.h"
 #include <SDL2/SDL_image.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -21,6 +22,12 @@ float SphereRotationSpeed = 2.5f;
 // フレームごとの経過時間を保持する変数
 Uint32 lastFrameTime = 0; // 前フレームの時刻
 float deltaTime = 0.0f;    // 経過時間
+// エフェクトの表示状態を管理する変数
+bool effectActive = false;      // エフェクトが表示中かどうか
+Uint32 effectStartTime = 0;     // エフェクトが開始された時間
+Uint32 effectDuration = 500;    // エフェクトの表示時間 (ミリ秒)
+bool isMousePressed = false;  // マウスが押されているかどうかを管理するフラグ
+glm::vec3 surfaceNorm(0.0f, 0.0f, 1.0f); //壁の法線方向
 
 SDL_Window* window;
 SDL_GLContext context;
@@ -112,22 +119,53 @@ void handleKeyboardEvent(const SDL_Event& event) {
     }
 }
 
+void handleMouseButtonEvent(const SDL_Event& event) {
+    if (event.type == SDL_MOUSEBUTTONDOWN) {
+        if (event.button.button == SDL_BUTTON_LEFT) {
+            std::cout << "Left mouse button pressed at (" << event.button.x << ", " << event.button.y << ")" << std::endl;
+
+            isMousePressed = true;  // マウスが押されたらフラグをオン
+
+            if (gGame.player->weapon.AK_47 == SDL_TRUE || gGame.player->weapon.AWP == SDL_TRUE) {
+                std::cout << "AK47 or AWP selected, triggering bullet effect" << std::endl;
+                effectActive = true;  // エフェクトを有効化
+            }
+        }
+    } else if (event.type == SDL_MOUSEBUTTONUP) {
+        if (event.button.button == SDL_BUTTON_LEFT) {
+            std::cout << "Left mouse button released" << std::endl;
+            isMousePressed = false;
+            effectActive = false;
+        }
+    }
+}
+
 void handleMouseMotionEvent() {
     int xOffset, yOffset;
 
     // 相対モードでのマウスの動きを取得
     SDL_GetRelativeMouseState(&xOffset, &yOffset);
+    // 初回の大きな動作を無視
+    if (firstMouse) {
+        // 大きなオフセットが発生した場合は無視する
+        if (abs(xOffset) > 100 || abs(yOffset) > 100) {
+            std::cout << "Ignoring large mouse movement offset (xOffset: " << xOffset << ", yOffset: " << yOffset << ")" << std::endl;
+            return;
+        }
+        firstMouse = false;
+        return;
+    }
 
     // 感度の調整
     float yawSensitivity = 0.2f;    // 横方向の感度（強め）
     float pitchSensitivity = 0.05f;  // 縦方向の感度（弱め）
-    
+
     float yawOffset = -xOffset * yawSensitivity;
     float pitchOffset = yOffset * pitchSensitivity;
 
     // カメラの回転角度を更新
     gCameraYaw += yawOffset;
-    cameraPitch -= pitchOffset; // ピッチは上下反転するので符号を反転
+    cameraPitch -= pitchOffset; 
 
     // ピッチ角を制限（上下方向の視界を制限）
     cameraPitch = std::clamp(cameraPitch, -89.0f, 89.0f);
@@ -139,6 +177,19 @@ void handleMouseMotionEvent() {
     cnt[2] = eye[2] + radius * sin(glm::radians(cameraPitch));
 }
 
+void centerMouseCursor(SDL_Window* window) {
+    int width, height;
+
+    // ウィンドウのサイズを取得
+    SDL_GetWindowSize(window, &width, &height);
+
+    // 中心座標を計算
+    int centerX = width / 2;
+    int centerY = height / 2;
+
+    // マウスカーソルをウィンドウの中央に移動
+    SDL_WarpMouseInWindow(window, centerX, centerY);
+}
 
 void displayFunc() {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -149,8 +200,29 @@ void displayFunc() {
     
     drawTexturedSphere(200.0f, skyTexture);
     renderPlayer(0,0,0);
+    createBulletEffect(1.0f, 1.0f, 1.0f);
+    if (isMousePressed) {
+        glm::vec3 hitPosition = raycastFromCamera(1000.0f);
+        if (hitPosition != glm::vec3(0, 0, 0)) {
+            // 銃痕を作成（3秒後に消えるように設定）
+            createBulletHole(hitPosition.x, hitPosition.y, hitPosition.z, 2000);  // 3000ミリ秒 (3秒)後に消える
+        }
+    }
+    renderBulletHoles();
     drawCrosshair();
     SDL_GL_SwapWindow(window);
+}
+
+void updateRightArmRotationByCameraPitch() {
+    // カメラのピッチ角度に基づいて右腕の回転を制御
+    float maxArmRotation = -45.0f;  // 最大回転角度
+    float minArmRotation = 45.0f; // 最小回転角度
+
+    // cameraPitchは上下の向きなので、その値を-89度〜89度にマッピング
+    float normalizedPitch = glm::clamp(cameraPitch, -89.0f, 89.0f);
+
+    // ピッチに応じて回転角度を設定
+    gGame.player->rightArmRotation = glm::mix(minArmRotation, maxArmRotation, (normalizedPitch + 89.0f) / 178.0f);
 }
 
 void updatePlayerPosition() {
@@ -238,19 +310,6 @@ void updatePlayerPosition() {
     float legRotationSpeed = 100.0f;
 
     if (isMoving) {
-        // 右腕と左腕、右足と左足の回転処理は前と同じ
-        if (gGame.player->rightArmIncreasing) {
-            gGame.player->rightArmRotation += armRotationSpeed * deltaTime;
-            if (gGame.player->rightArmRotation > 30.0f) {
-                gGame.player->rightArmIncreasing = false;
-            }
-        } else {
-            gGame.player->rightArmRotation -= armRotationSpeed * deltaTime;
-            if (gGame.player->rightArmRotation < -30.0f) {
-                gGame.player->rightArmIncreasing = true;
-            }
-        }
-
         if (gGame.player->leftArmIncreasing) {
             gGame.player->leftArmRotation -= armRotationSpeed * deltaTime;
             if (gGame.player->leftArmRotation < -30.0f) {
@@ -304,12 +363,14 @@ void updatePlayerPosition() {
     cnt[0] = eye[0] + forwardX;
     cnt[1] = eye[1] + forwardY;
     cnt[2] = eye[2] + sin(pitchRadians);
+    printf("%f %f %f, \n", gGame.player->point.x, gGame.player->point.y, gGame.player->point.z);
 }
 
 
 void idleFunc() {
     calculateDeltaTime(); // 毎フレームの経過時間を計算
     updatePlayerPosition();
+    updateRightArmRotationByCameraPitch();
     // 球体の回転角度を更新
     sphereRotationAngle += SphereRotationSpeed * deltaTime;   // 回転速度を調整
     if (sphereRotationAngle >= 360.0f) {
@@ -353,6 +414,7 @@ int main(int argc, char** argv) {
     // ゲームのフェーズに応じて処理を変更
     if (gGame.stts == GS_WeaponSelect) {
         selectWeapon(); // 武器選択画面を表示
+        centerMouseCursor(window);
     } 
     // 相対モードを有効にする
     if (SDL_SetRelativeMouseMode(SDL_TRUE) != 0) {
@@ -371,6 +433,8 @@ int main(int argc, char** argv) {
                 handleKeyboardEvent(event);
             } else if (event.type == SDL_MOUSEMOTION) {
                 handleMouseMotionEvent();
+            } else if (event.type == SDL_MOUSEBUTTONDOWN || event.type == SDL_MOUSEBUTTONUP) {
+                handleMouseButtonEvent(event);  // マウスボタンイベントの処理
             }
         }
         idleFunc();

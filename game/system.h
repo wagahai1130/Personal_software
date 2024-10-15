@@ -23,6 +23,7 @@ extern "C" {
 #include <libqhull_r/libqhull_r.h>
 }
 #include <unordered_map>
+#include <netinet/in.h>
 
 /* ウインドウサイズ(ピクセル) */
 #define WD_Width 1920
@@ -60,12 +61,19 @@ typedef struct {
     float z;        
 } CharaJointData;
 
-/* 銃弾の初期座標を格納する構造体 */
+/* 初期座標を格納する構造体 */
 typedef struct {
     float x;
     float y;
     float z;
 } Data;
+
+struct BulletHole {
+    glm::vec3 position;      // 銃痕の座標
+    glm::vec3 normal;
+    Uint32 createTime;       // 銃痕が作成された時間
+    Uint32 duration;         // 銃痕が表示される時間（ミリ秒）
+};
 
 /* キャラクタータイプ */
 typedef enum {
@@ -257,6 +265,7 @@ extern GLuint buildingTexture;
 extern GLuint skyTexture;
 extern GLuint selectTexture;
 extern float gCameraYaw;  // カメラの向きを表すグローバル変数
+extern float cameraPitch;
 extern std::unordered_map<std::string, std::vector<glm::vec3>> convexHullCache;
 extern GLuint charaTexture1;
 extern GLuint bodyTexture1;
@@ -266,8 +275,14 @@ extern GLuint gun_arm_subTexture;
 extern GLuint swordTexture;
 extern float deltaTime;
 extern Uint32 lastFrameTime;
-extern Data AK47_bulletdata;
-extern Data AWP_bulletdata;
+extern Data AK47_muzzledata;
+extern Data AWP_muzzledata;
+extern Data AK47_effectdata;
+extern Data AWP_effectdata;
+extern bool effectActive;      // エフェクトが表示中かどうか
+extern Uint32 effectStartTime;     // エフェクトが開始された時間
+extern Uint32 effectDuration; 
+extern bool isMousePressed;
 
 /* 関数 */
 // game.cpp
@@ -305,6 +320,11 @@ std::vector<glm::vec3> calculateConvexHullQhull(const std::vector<glm::vec3>& po
 bool overlapOnAxis(const std::vector<glm::vec3>& hull1, const std::vector<glm::vec3>& hull2, const glm::vec3& axis);
 bool checkCollisionConvexHull(const std::vector<glm::vec3>& hull1, const std::vector<glm::vec3>& hull2);
 bool checkCollisionForPlayerParts(const CharaInfo* player, const std::vector<Objdata>& objects);
+void createBulletEffect(float r, float g, float b);
+void createBulletHole(float x, float y, float z, Uint32 duration);
+void renderBulletHoles();
+glm::vec3 raycastFromCamera(float maxDistance);
+bool rayIntersectsTriangle(const glm::vec3& rayOrigin, const glm::vec3& rayDirection, const glm::vec3& v0, const glm::vec3& v1, const glm::vec3& v2, glm::vec3& hitPosition);
 // window.cpp
 void draw_background(GLuint texture);
 void draw_3d_character();

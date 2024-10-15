@@ -3,6 +3,7 @@
  機能：ゲームシステム処理
  **/
 #include "system.h"
+#include "constants.h"
 #include <SDL2/SDL_opengl.h>
 #include <SDL2/SDL_image.h>
 #include <float.h>
@@ -32,10 +33,15 @@ GLuint elementTexture;
 GLuint redTexture;
 GLuint gun_arm_subTexture;
 GLuint swordTexture;
-GLuint bulletTexture;
+GLuint shotTexture;
+GLuint bulletHoleTexture;
 Objdata obj;
-Data AK47_bulletdata;
-Data AWP_bulletdata;
+Objdata obj_e;
+Data AK47_muzzledata;
+Data AWP_muzzledata;
+Data AK47_effectdata;
+Data AWP_effectdata;
+std::vector<BulletHole> bulletHoles;  // 銃痕を格納するリスト
 // 凸包のキャッシュ
 std::unordered_map<std::string, std::vector<glm::vec3>> convexHullCache;
 
@@ -351,9 +357,12 @@ void initializeRendering() {
     redTexture = loadTexture("../texture/red.jpg");
     gun_arm_subTexture = loadTexture("../texture/gun_arm.jpg");
     swordTexture = loadTexture("../texture/sword.jpg");
-    bulletTexture = loadTexture("../texture/bullet.jpg");
-    read_data_from_file("../weapon/AK-47_bulletPos.txt", AK47_bulletdata);
-    read_data_from_file("../weapon/AWP_bulletPos.txt", AWP_bulletdata);
+    shotTexture = loadTexture("../texture/shot.jpg");
+    bulletHoleTexture = loadTexture("../texture/bulletHole.png");
+    read_data_from_file("../weapon/AK-47_muzzlePos.txt", &AK47_muzzledata);
+    read_data_from_file("../weapon/AWP_muzzlePos.txt", &AWP_muzzledata);
+    read_data_from_file("../weapon/AK-47_effectPos.txt", &AK47_effectdata);
+    read_data_from_file("../weapon/AWP_effectPos.txt", &AWP_effectdata);
     std::cout << "Total loaded objects: " << objDataArray.size() << std::endl;
     std::cout << "Total loaded charaData: " << charaDataArray.size() << std::endl;
 }
@@ -466,7 +475,6 @@ void renderRightLeg(float r, float g, float b){
     obj = loadObjData("../chara/rightLeg.txt");
     glPushMatrix();
 
-    // (-0.075, 0.0, 0.3)
     // 全身の胴体とともに回転させる
     glTranslatef(gGame.player->point.x, gGame.player->point.y, gGame.player->point.z);
     glRotatef(gCameraYaw + 90.0f, 0.0f, 0.0f, 1.0f); // 胴体の回転に合わせて全体を回転
@@ -523,30 +531,70 @@ void renderPlayer(float r, float g, float b){
     glEnable(GL_LIGHTING);
 }
 
-void createBullet(float r, float g, float b){
+void createBulletEffect(float r, float g, float b) {
+    if (!effectActive || !isMousePressed) {
+        return;  // エフェクトが無効な場合は表示しない
+    }
+
     glDisable(GL_TEXTURE_2D);
     glDisable(GL_LIGHTING);
-    glColor3f(0.0f, 0.0f, 0.0f);
-    if(gGame.player->weapon.AK_47 == SDL_TRUE){
-        obj = loadObjData("../weapon/AK-47_bullet.txt");  
-        texture = bulletTexture;  
-        glPushMatrix();
+    GLuint texture;
+    texture = shotTexture;
 
-        glTranslatef(gGame.player->point.x + AK47_bulletdata.x, gGame.player->point.y + AK47_bulletdata.y, gGame.player->point.z + AK47_bulletdata.z);
-        makeObj(obj, r, g, b, texture);
+    // AK_47かAWPが選択されている場合の処理
+    if (gGame.player->weapon.AK_47 == SDL_TRUE) {
+        obj_e = loadObjData("../weapon/AK-47_effect.txt");
+        glPushMatrix();
+        glTranslatef(gGame.player->point.x, gGame.player->point.y, gGame.player->point.z);
+        glRotatef(gCameraYaw + 90.0f, 0.0f, 0.0f, 1.0f);  // Yawに基づいて回転
+        glRotatef(gGame.player->rightArmRotation, 1.0f, 0.0f, 0.0f);  // 右腕の回転角に基づいて回転
+        makeObj(obj_e, r, g, b, texture);
+        glPopMatrix();
+    } else if (gGame.player->weapon.AWP == SDL_TRUE) {
+        obj_e = loadObjData("../weapon/AWP_effect.txt");
+        glPushMatrix();
+        glTranslatef(gGame.player->point.x, gGame.player->point.y, gGame.player->point.z);
+        glRotatef(gCameraYaw + 90.0f, 0.0f, 0.0f, 1.0f);  // Yawに基づいて回転
+        glRotatef(gGame.player->rightArmRotation, 1.0f, 0.0f, 0.0f);  // 右腕の回転角に基づいて回転
+        makeObj(obj_e, r, g, b, texture);
         glPopMatrix();
     }
-    else if(gGame.player->weapon.AWP == SDL_TRUE){
-        obj = loadObjData("../weapon/AWP_bullet.txt");  
-        texture = bulletTexture;  
-        glPushMatrix();
 
-        glTranslatef(gGame.player->point.x + AWP_bulletdata.x, gGame.player->point.y + AWP_bulletdata.y, gGame.player->point.z + AWP_bulletdata.z);
-        makeObj(obj, r, g, b, texture);
-        glPopMatrix();
-    }
     glEnable(GL_TEXTURE_2D);
     glEnable(GL_LIGHTING);
+}
+
+void createBulletHole(float x, float y, float z, Uint32 duration) {
+    BulletHole bulletHole;
+    bulletHole.position = glm::vec3(x, y, z);
+    bulletHole.createTime = SDL_GetTicks();  // 現在の時間を記録
+    bulletHole.duration = duration;  // 銃痕が表示される時間を設定（ミリ秒）
+    bulletHoles.push_back(bulletHole);  // 銃痕をリストに追加
+}
+
+void renderBulletHoles() {
+    Uint32 currentTime = SDL_GetTicks();  // 現在の時刻を取得
+
+    // 銃痕リストを逆順に走査し、時間が経過した銃痕を削除しながら描画
+    for (int i = bulletHoles.size() - 1; i >= 0; --i) {
+        BulletHole& bulletHole = bulletHoles[i];
+        
+        // 銃痕が表示される時間を過ぎた場合、リストから削除
+        if (currentTime - bulletHole.createTime > bulletHole.duration) {
+            bulletHoles.erase(bulletHoles.begin() + i);  // 古い銃痕を削除
+            continue;
+        }
+
+        // 銃痕を描画
+        obj = loadObjData("../weapon/bulletHole.txt");
+        glPushMatrix();
+
+        // 銃痕の位置に移動
+        glTranslatef(bulletHole.position.x, bulletHole.position.y, bulletHole.position.z );
+        glRotatef(gCameraYaw + 90.0f, 0.0f, 0.0f, 1.0f);
+        makeObj(obj, 1.0f, 1.0f, 1.0f, bulletHoleTexture);  // 銃痕を描画
+        glPopMatrix();
+    }
 }
 
 void setLight() {
@@ -827,3 +875,62 @@ bool checkCollisionForPlayerParts(const CharaInfo* player, const std::vector<Obj
     return false;  // 衝突がなければfalseを返す
 }
 
+// レイキャストによって、レイが壁やオブジェクトと交差する位置を計算する関数
+glm::vec3 raycastFromCamera(float maxDistance) {
+    glm::vec3 hitPosition(0, 0, 0);
+
+    glm::vec3 rayOrigin = glm::vec3(eye[0], eye[1], eye[2]);  // eyeをglm::vec3に変換
+    glm::vec3 rayDirection = glm::normalize(glm::vec3(cnt[0], cnt[1], cnt[2]) - rayOrigin);  // cntもglm::vec3に変換して使用
+
+    // 壁やオブジェクトとの交差判定を行う
+    float closestDistance = maxDistance;  // 最大距離までレイキャストを行う
+
+    for (const Objdata& object : objDataArray) {
+        // オブジェクトの三角形ごとにレイと交差するかを調べる
+        for (size_t i = 0; i < object.index.size(); i += 3) {
+            glm::vec3 v0 = glm::vec3(object.vertex[object.index[i] * 3], object.vertex[object.index[i] * 3 + 1], object.vertex[object.index[i] * 3 + 2]);
+            glm::vec3 v1 = glm::vec3(object.vertex[object.index[i+1] * 3], object.vertex[object.index[i+1] * 3 + 1], object.vertex[object.index[i+1] * 3 + 2]);
+            glm::vec3 v2 = glm::vec3(object.vertex[object.index[i+2] * 3], object.vertex[object.index[i+2] * 3 + 1], object.vertex[object.index[i+2] * 3 + 2]);
+
+            glm::vec3 intersectionPoint;
+            if (rayIntersectsTriangle(rayOrigin, rayDirection, v0, v1, v2, intersectionPoint)) {
+                float distance = glm::distance(rayOrigin, intersectionPoint);
+                if (distance < closestDistance) {
+                    closestDistance = distance;
+                    hitPosition = intersectionPoint;  // 最も近い交点を保存
+                }
+            }
+        }
+    }
+    return hitPosition;  // 壁やオブジェクトとの交差点を返す
+}
+
+bool rayIntersectsTriangle(const glm::vec3& rayOrigin, const glm::vec3& rayDirection, const glm::vec3& v0, const glm::vec3& v1, const glm::vec3& v2, glm::vec3& hitPosition) {
+    // Möller-Trumbore intersection algorithm
+    const float EPSILON = 0.0000001f;
+    glm::vec3 edge1 = v1 - v0;
+    glm::vec3 edge2 = v2 - v0;
+    glm::vec3 h = glm::cross(rayDirection, edge2);
+    float a = glm::dot(edge1, h);
+    if (a > -EPSILON && a < EPSILON)
+        return false; // レイが三角形と平行
+
+    float f = 1.0f / a;
+    glm::vec3 s = rayOrigin - v0;
+    float u = f * glm::dot(s, h);
+    if (u < 0.0f || u > 1.0f)
+        return false;
+
+    glm::vec3 q = glm::cross(s, edge1);
+    float v = f * glm::dot(rayDirection, q);
+    if (v < 0.0f || u + v > 1.0f)
+        return false;
+
+    float t = f * glm::dot(edge2, q);
+    if (t > EPSILON) { // レイと三角形が交差
+        hitPosition = rayOrigin + rayDirection * t;
+        return true;
+    } else {
+        return false;
+    }
+}

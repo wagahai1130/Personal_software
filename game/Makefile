@@ -13,8 +13,10 @@ LDLIBS = -L/usr/lib/x86_64-linux-gnu -lqhull_r -lm -lSDL2 -lSDL2_image -lSDL2_tt
 #LDLIBS = -lm -lSDL2 -ljoyconlib -lhidapi-hidraw 
 
 TARGET = game
+SERVER_TARGET = server  # server.cpp用のターゲット
 OBJS = $(TARGET).o system.o window.o 
-HEADS = system.h
+SERVER_OBJS = server.o
+HEADS = system.h constants.h
 
 # 課題に取り組むにはこのターゲットで
 #   -g3 はデバッグ情報を埋め込むオプション
@@ -34,6 +36,10 @@ release: CPPFLAGS += -DNDEBUG -std=c++17
 release: COPTIONS = -O3 
 release: $(TARGET)
 
+# serverターゲットの追加
+server: $(SERVER_OBJS)
+	$(CC) $(CFLAGS) $(LDFLAGS) $(SERVER_OBJS) $(LDLIBS) -o $(SERVER_TARGET)
+
 # 暗黙のルールでの動作は以下の通り
 # cソースからオブジェクト
 #   $(CC) $(CFLAGS) $(CPPFLAGS) -c n.c -o n.o
@@ -42,6 +48,10 @@ release: $(TARGET)
 #
 $(TARGET): $(OBJS)
 $(OBJS): $(HEADS)
+
+# server.oの生成ルール
+$(SERVER_OBJS): server.cpp 
+	$(CC) $(CFLAGS) $(CPPFLAGS) -c server.cpp
 
 # レポート作成用ターゲット
 # 例えば repo.tex があるとき，
